@@ -6,31 +6,37 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/07 18:47:20 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/08 13:24:28 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/01/08 17:35:15 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 
-SRC_FILES =
-OBJ_FILES = $(SRC_FILES:%.c=%.o)
-HDR_FILES =
-CFLAGS = -Wall -Wextra -Werror
-LIBFT = libft/libft.a
+include srcs/mini_srcs
+
+NAME := 
+
+OBJS := $(MINI_SOURCES:%=objs/%.o)
+
+CFLAGS := -Wall -Wextra -Werror
+
+HDRS :=
+
+LIBFT_PATH := ./libft
+LIBFT := $(LIB_PATH)/libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJ_FILES)
-	$(CC) -o $@ $^
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) -o $@ $^ $(LIBFT)
 
-%.o: %.c $(HDR_FILES) $(LIBFT)
-	$(CC) -c $(CFLAGS) -o $@ $< -I./libft $(LIBFT)
+%.o: %.c $(HDRS)
+	$(CC) -c $(CFLAGS) -o $@ $< -I$(LIBFT_PATH)
 
-$(LIBFT):
-	make -C ./libft
+$(LIBFT): FORCE
+	make -C $(LIBFT_PATH)
 
 clean:
-	rm -f $(OBJ_FILES)
-	make clean -C ./libft
+	rm -f $(OBJS)
+	make clean -C $(LIBFT_PATH)
 
 fclean: clean
 	rm -f $(NAME)
@@ -38,7 +44,9 @@ fclean: clean
 
 re: fclean all
 
-test: $(OBJ_FILES) $(LIBFT)
-	$(CC) -o $@ $^
+FORCE:
 
-.PHONY: all clean fclean re
+test: $(OBJS) $(LIBFT)
+	make test -C tests
+
+.PHONY: all clean fclean re FORCE

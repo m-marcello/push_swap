@@ -6,27 +6,36 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/08 13:03:52 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/08 13:49:01 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/01/08 17:32:32 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = test
-SRC_TEST_FILES = criterion_test.c
-OBJ_TEST_FILES = $(SRC_TEST_FILES:%.c=%.o)
-HDR_FILES =
-CFLAGS = 
-LIBFT = ../libft/libft.a
+include ../srcs/mini_srcs
+include ./srcs/tests_mini_srcs
+
+NAME := test
+
+OBJS := $(MINI_SOURCES:%=../objs/%.o)
+TESTS_OBJS := $(TESTS_MINI_SOURCES:%=objs/%.o)
+
+CFLAGS := -Wall -Wextra -Werror
+
+HDRS :=
+
+LIBFT_PATH := ../libft
+LIBFT := $(LIB_PATH)/libft.a
 
 all: $(NAME)
+	@echo $(TESTS_OBJS)
 
-$(NAME): $(OBJ_TEST_FILES)
-	$(CC) -o $@ $^ ../src/*.o 
+$(NAME): $(TESTS_OBJS) $(OBJS)
+	$(CC) -o $@ $^ -lcriterion $(LIBFT)
 
-%.o: %.c $(HDR_FILES) $(LIBFT)
-	$(CC) -c $(CFLAGS) -o $@ $< -I../libft -lcriterion $(LIBFT)
+%.o: %.c $(HDRS)
+	$(CC) -c $(CFLAGS) -o $@ $< -I$(LIBFT_PATH)
 
 clean:
-	rm -f $(OBJ_TEST_FILES)
+	rm -f $(TESTS_OBJS)
 
 fclean: clean
 	rm -f $(NAME)
