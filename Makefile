@@ -6,7 +6,7 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/07 18:47:20 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/08 17:35:15 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/01/08 19:28:53 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,35 +18,37 @@ OBJS := $(MINI_SOURCES:%=objs/%.o)
 
 CFLAGS := -Wall -Wextra -Werror
 
-HDRS :=
-
 LIBFT_PATH := ./libft
-LIBFT := $(LIB_PATH)/libft.a
+LIBFT := $(LIBFT_PATH)/libft.a
+
+INCLUDES := -I $(LIBFT_PATH)
+HDRS :=
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) -o $@ $^ $(LIBFT)
+	@$(CC) -o $@ $^ $(LIBFT)
+	@echo " --> compiled $@"
 
 %.o: %.c $(HDRS)
-	$(CC) -c $(CFLAGS) -o $@ $< -I$(LIBFT_PATH)
+	@$(CC) -c $(CFLAGS) -o $@ $< $(INCLUDES)
 
 $(LIBFT): FORCE
-	make -C $(LIBFT_PATH)
+	@make -C $(LIBFT_PATH)
 
 clean:
-	rm -f $(OBJS)
-	make clean -C $(LIBFT_PATH)
+	@rm -fv $(OBJS)
+	@make clean -C $(LIBFT_PATH)
 
 fclean: clean
-	rm -f $(NAME)
-	rm -f $(LIBFT)
+	@rm -fv $(NAME)
+	@rm -fv $(LIBFT)
 
 re: fclean all
 
 FORCE:
 
 test: $(OBJS) $(LIBFT)
-	make test -C tests
+	@make test -C tests
 
 .PHONY: all clean fclean re FORCE

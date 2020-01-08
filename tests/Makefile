@@ -6,7 +6,7 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/08 13:03:52 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/08 17:32:32 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/01/08 19:28:54 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,25 +20,26 @@ TESTS_OBJS := $(TESTS_MINI_SOURCES:%=objs/%.o)
 
 CFLAGS := -Wall -Wextra -Werror
 
+LIBFT_PATH := ./libft
+LIBFT := $(LIBFT_PATH)/libft.a
+
+INCLUDES := -I $(LIBFT_PATH)
 HDRS :=
 
-LIBFT_PATH := ../libft
-LIBFT := $(LIB_PATH)/libft.a
-
 all: $(NAME)
-	@echo $(TESTS_OBJS)
 
 $(NAME): $(TESTS_OBJS) $(OBJS)
-	$(CC) -o $@ $^ -lcriterion $(LIBFT)
+	@$(CC) -o $@ $^ -lcriterion $(LIBFT)
+	@echo " --> compiled $@"
 
 %.o: %.c $(HDRS)
-	$(CC) -c $(CFLAGS) -o $@ $< -I$(LIBFT_PATH)
+	@$(CC) -c $(CFLAGS) -o $@ $< -I$(LIBFT_PATH)
 
 clean:
-	rm -f $(TESTS_OBJS)
+	@rm -fv $(TESTS_OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -fv $(NAME)
 
 re: fclean all
 
