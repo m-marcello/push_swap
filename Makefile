@@ -6,7 +6,7 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/07 18:47:20 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/09 18:51:03 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/01/09 19:46:10 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,10 +55,10 @@ lclean:
 	@rm -fv $(OBJS) | sed -e $$'s/^/ $(MINUS) /'
 
 fclean: clean lfclean
-	@rm -fv $(LIBFT)
+	@rm -fv $(LIBFT) | sed -e $$'s/^/ $(MINUS) /'
 
 lfclean:
-	@rm -fv $(NAME)
+	@rm -fv $(NAME) | sed -e $$'s/^/ $(MINUS) /'
 
 re: fclean all
 

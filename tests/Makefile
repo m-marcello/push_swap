@@ -6,7 +6,7 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/08 13:03:52 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/09 18:53:43 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/01/09 19:46:26 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,7 @@ clean:
 	@rm -fv $(TESTS_OBJS) | sed -e $$'s/^/ $(MINUS) /'
 
 fclean: clean
-	@rm -fv $(NAME)
-	@echo " ${MINUS} ${NAME}"
+	@rm -fv $(NAME) | sed -e $$'s/^/ $(MINUS) /'
 
 re: fclean all
 
