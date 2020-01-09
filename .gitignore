@@ -2,3 +2,5 @@
 a.out
 *json*
 tests/test
+checker
+push_swap

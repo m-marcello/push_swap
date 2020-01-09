@@ -6,7 +6,7 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/08 13:03:52 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/08 19:28:54 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/01/09 18:53:43 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,20 +26,25 @@ LIBFT := $(LIBFT_PATH)/libft.a
 INCLUDES := -I $(LIBFT_PATH)
 HDRS :=
 
+PLUS = \033[38;5;40m+\033[0;00m
+MINUS = \033[38;5;160m-\033[0;00m
+
 all: $(NAME)
 
 $(NAME): $(TESTS_OBJS) $(OBJS)
 	@$(CC) -o $@ $^ -lcriterion $(LIBFT)
-	@echo " --> compiled $@"
+	@echo " ${PLUS} $@"
 
 %.o: %.c $(HDRS)
 	@$(CC) -c $(CFLAGS) -o $@ $< -I$(LIBFT_PATH)
+	@echo " ${PLUS} $@"
 
 clean:
-	@rm -fv $(TESTS_OBJS)
+	@rm -fv $(TESTS_OBJS) | sed -e $$'s/^/ $(MINUS) /'
 
 fclean: clean
 	@rm -fv $(NAME)
+	@echo " ${MINUS} ${NAME}"
 
 re: fclean all
 

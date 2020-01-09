@@ -6,8 +6,12 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/08 17:27:45 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/08 17:28:04 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/01/09 15:42:05 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-MINI_SOURCES :=
+MINI_SOURCES_SHARE :=
+
+MINI_SOURCES_CHECK := checker_main
+
+MINI_SOURCES_PU_SW :=
