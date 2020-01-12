@@ -6,7 +6,7 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/08 13:03:52 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/09 19:46:26 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/01/12 17:40:26 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,12 @@ TESTS_OBJS := $(TESTS_MINI_SOURCES:%=objs/%.o)
 
 CFLAGS := -Wall -Wextra -Werror
 
-LIBFT_PATH := ./libft
+LIBFT_PATH := ../libft
 LIBFT := $(LIBFT_PATH)/libft.a
 
-INCLUDES := -I $(LIBFT_PATH)
-HDRS :=
+HDRS_PATH := ../hdrs
+INCLUDES := -I $(LIBFT_PATH) -I $(HDRS_PATH)
+HDRS := $(HDRS_PATH)/share.h $(HDRS_PATH)/check.h $(HDRS_PATH)/pu_sw.h
 
 PLUS = \033[38;5;40m+\033[0;00m
 MINUS = \033[38;5;160m-\033[0;00m
