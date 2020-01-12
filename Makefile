@@ -6,7 +6,7 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/07 18:47:20 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/10 15:12:07 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/01/12 15:25:47 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ LIBFT := $(LIBFT_PATH)/libft.a
 
 HDRS_PATH := hdrs
 INCLUDES := -I $(LIBFT_PATH) -I $(HDRS_PATH)
-HDRS := $(HDRS_PATH)/shared.h $(HDRS_PATH)/checker.h $(HDRS_PATH)/push_swap.h
+HDRS := $(HDRS_PATH)/shar.h $(HDRS_PATH)/check.h $(HDRS_PATH)/pu_sw.h
 
 PLUS := \033[38;5;40m+\033[0;00m
 MINUS := \033[38;5;160m-\033[0;00m
