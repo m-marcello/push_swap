@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 17:10:41 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/13 17:18:02 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/13 18:49:39 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ Test(sh_input_validation, one_string_valid)
 	t_clist	*stack_a;
 
 	cr_assert(is_valid_input(1, &"0", &stack_a) == 1 , "one string input should be valid.");
-	cr_assert(is_valid_input(1, &"0 -4 572 168 19635", &stack_a) == 1 , "one string input should be valid.");
+	cr_assert(is_valid_input(1, &"0 -4 572 168 +19635", &stack_a) == 1 , "one string input should be valid.");
 	cr_assert(is_valid_input(1, &"8462     -379 39480    379 1   0", &stack_a) == 1 , "one string input with extra spaces in the middle should be valid.");
 	cr_assert(is_valid_input(1, &"9277893 -1728 1666 16 3 -808 0     ", &stack_a) == 1 , "one string input ending with extra spaces should be valid.");
-	cr_assert(is_valid_input(1, &"8462     -379 39480    47900 1   0", &stack_a) == 1 , "one string input with extra spaces in the middle should be valid.");
+	cr_assert(is_valid_input(1, &"+8462     -379 39480    47900 1   0", &stack_a) == 1 , "one string input with extra spaces in the middle should be valid.");
 	cr_assert(is_valid_input(1, &"-3 6 2345 -0", &stack_a) == 1 , "one string input with extra spaces -0 should be valid.");
 }
 
@@ -89,9 +89,9 @@ Test(sh_input_validation, multi_string_valid)
 	t_clist	*stack_a;
 
 	cr_assert(is_valid_input(1, &"1" "-279", &stack_a) == 1 , "multi string input should be valid.");
-	cr_assert(is_valid_input(1, &"9789" "972" "-29797 797" "808", &stack_a) == 1 , "multi string input with extra spaces should be valid.");
+	cr_assert(is_valid_input(1, &"+9789" "000972" "-29797 797" "808", &stack_a) == 1 , "multi string input with extra spaces should be valid.");
 	cr_assert(is_valid_input(1, &"9" "-8" "73 " "0", &stack_a) == 1 , "multi string input with extra spaces should be valid.");
-	cr_assert(is_valid_input(1, &"0" "  79", &stack_a) == 1 , "multi string input with extra spaces should be valid.");
+	cr_assert(is_valid_input(1, &"0" "  +79", &stack_a) == 1 , "multi string input with extra spaces should be valid.");
 	cr_assert(is_valid_input(1, &"0" "79" "-979268   ", &stack_a) == 1 , "multi string input with extra spaces should be valid.");
 }
 
@@ -140,9 +140,9 @@ Test(sh_input_validation, multi_string_non_num_char_mid)
 {
 	t_clist	*stack_a;
 
-	cr_assert(is_valid_input(1, &"783" "7-24" "78", &stack_a) == 0 , "multi string input with non num charackter in the middle should be invalid.");
-	cr_assert(is_valid_input(1, &"0" "70179" "-1681" "287s979" "702" "72" "-7", &stack_a) == 0 , "multi string input with non num charackter in the middle should be invalid.");
-	cr_assert(is_valid_input(1, &"8920" "-\t" "20" "270" "203", &stack_a) == 0 , "multi string input with non num charackter in the middle should be invalid.");
+	cr_assert(is_valid_input(1, &"783" "-+24" "78", &stack_a) == 0 , "multi string input with non num charackter in the middle should be invalid.");
+	cr_assert(is_valid_input(1, &"0" "70179" "-1681" "287-979" "702" "72" "-7", &stack_a) == 0 , "multi string input with non num charackter in the middle should be invalid.");
+	cr_assert(is_valid_input(1, &"8920" "-" "20" "270" "203", &stack_a) == 0 , "multi string input with non num charackter in the middle should be invalid.");
 }
 
 Test(sh_input_validation, multi_string_non_num_char_end)

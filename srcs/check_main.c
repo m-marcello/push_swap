@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 14:57:53 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/13 12:54:48 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/13 18:14:03 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		main(int argc, char **argv)
 
 	if (argc == 1)
 		return (0);
+	stack_a = 0;
 	if (!is_valid_input(argc - 1, argv[1], &stack_a) || !is_valid_inst(&inst))
 	{
 		write(2, "Error\n", 6);
