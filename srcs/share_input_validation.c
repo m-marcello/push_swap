@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 16:05:14 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/12 17:42:20 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/13 12:54:35 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,18 @@
 ** validates the input and creates stack a as linked circle if input is valid
 **
 ** params
-**	int argc			default argc from main
-**	char **argv			default argv from main
+**	int argc			number of strings of argv
+**	char **argv			address of first argument of main
 **	t_clist **stack_a	pointer to first element of stack a
 ** return
-**	1					in case of invalid input
-**	0					in case of valid input
+**	1					in case of valid input
+**	0					in case of invalid input
 */
 
-int		validate_input(int argc, char **argv, t_clist **stack_a)
+int		is_valid_input(int argc, char **argv, t_clist **stack_a)
 {
+	argc = 1;
+	argv = 0;
+	stack_a = 0;
 	return (0);
 }

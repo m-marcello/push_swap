@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 14:57:53 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/12 15:55:56 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/13 12:54:48 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "check.h"
 #include <unistd.h>
 
-int		main(int *argc, char *argv)
+int		main(int argc, char **argv)
 {
 	t_clist	*stack_a;
 	t_clist	*stack_b;
@@ -22,7 +22,7 @@ int		main(int *argc, char *argv)
 
 	if (argc == 1)
 		return (0);
-	if (validate_input(argc, argv, &stack_a) || validate_inst(&inst))
+	if (!is_valid_input(argc - 1, argv[1], &stack_a) || !is_valid_inst(&inst))
 	{
 		write(2, "Error\n", 6);
 		return (0);
