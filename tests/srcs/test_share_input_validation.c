@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 17:10:41 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/13 16:17:43 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/13 17:18:02 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ Test(sh_input_validation, multi_string_empty)
 	t_clist	*stack_a;
 
 	cr_assert(is_valid_input(1, &"" "" "" "" "", &stack_a) == 0 , "empty string input should be invalid");
+	cr_assert(is_valid_input(1, &" " "1", &stack_a) == 0 , "empty string input should be invalid");
 	cr_assert(is_valid_input(1, &"" "2974" "972" "1" "0", &stack_a) == 0 , "empty string input should be invalid");
 	cr_assert(is_valid_input(1, &"1866" "79" "" "0279" "270", &stack_a) == 0 , "empty string input should be invalid");
 	cr_assert(is_valid_input(1, &"0" "", &stack_a) == 0 , "empty string input should be invalid");
