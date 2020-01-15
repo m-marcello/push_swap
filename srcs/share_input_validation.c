@@ -6,11 +6,45 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 16:05:14 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/14 17:41:35 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/15 13:17:35 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "share.h"
+
+/*
+** -------------------------------------------------------------------------- **
+** checks for duplicate values in the stack
+**
+** params
+**	t_clist **head		pointer to first element of stack a
+** return
+**	1					when everthing went fine
+**	0					in case of error
+*/
+
+static int	check_for_duplicates(t_clist **head)
+{
+	t_clist	*walk_1;
+	t_clist	*walk_2;
+
+	walk_1 = *head;
+	while (walk_1->next != *head)
+	{
+		walk_2 = walk_1->next;
+		while (walk_2 != head)
+		{
+			if (walk_1->data == walk_2->data)
+			{
+				free_stack(head);
+				return (0);
+			}
+			walk_2 = walk_2->next;
+		}
+		walk_1 = walk_1->next;
+	}
+	return (1);
+}
 
 /*
 ** -------------------------------------------------------------------------- **
@@ -52,7 +86,7 @@ static int	array_atoi(char **str_arr, t_clist **head_a)
 		}
 		i++;
 	}
-	return (1);
+	return (check_for_duplicates(head_a));
 }
 
 /*
@@ -61,7 +95,7 @@ static int	array_atoi(char **str_arr, t_clist **head_a)
 ** to make integers out of the input strings
 **
 ** params
-**	int argc			number of strings of argv
+**	int argc			number of arguments passed to main
 **	char **argv			address of first argument of main
 **	t_clist **head_a	pointer to first element of stack a
 ** return
@@ -85,13 +119,14 @@ static int	split_input_strings(int argc, char **argv, t_clist **head_a)
 
 /*
 ** -------------------------------------------------------------------------- **
-** validates the input and creates stack a as linked circle if input is valid
+** validates the input and, if valid, sends it on its way to have stack a
+** created, represented by linked circle
 **
 ** accepts only spaces as seperator within a string,
 ** multiple spaces are supported
 **
 ** params
-**	int argc			number of strings of argv
+**	int argc			number of arguments passed to main
 **	char **argv			address of first argument of main
 **	t_clist **head_a	pointer to first element of stack a
 ** return
