@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 16:05:14 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/16 18:34:03 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/16 19:54:09 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static int	array_atoi(char **str_arr, t_stack **stack)
 		}
 		if (!append_to_stack(data, stack))
 		{
-			free_str_arr(str_arr);
+			free_str_arr(&str_arr);
 			free_stack(stack);
 			return (0);
 		}

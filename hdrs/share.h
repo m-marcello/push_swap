@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 15:15:21 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/16 18:25:27 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/16 19:57:18 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ typedef struct	s_stack
 int				is_valid_input(int argc, char **argv, t_stack **stack);
 int				is_sorted(t_stack *stack);
 int				is_empty(t_stack *stack);
+void			free_stack(t_stack **stack);
+void			free_str_arr(char ***str_arr);
 
 #endif
