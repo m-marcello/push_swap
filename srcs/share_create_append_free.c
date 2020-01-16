@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   share_create_free.c                                :+:    :+:            */
+/*   share_create_append_free.c                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 14:25:06 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/14 17:45:04 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/16 18:31:11 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 ** if there is no stack yet it will be created
 **
 ** params
-**	char **str_arr		array of strings containing the numbers for the stack
-**	t_clist **head		pointer to first element of stack
+**	int data		data for the node to be appended to stack
+**	t_stack **stack	pointer to struct representing stack
 ** return
-**	1					when everthing went fine
-**	0					in case of error
+**	1				when everthing went fine
+**	0				in case of error
 */
 
-void	append_to_stack(int data, t_clist **head)
+void	append_to_stack(int data, t_stack **stack)
 {
 	;
 }

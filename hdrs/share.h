@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 15:15:21 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/13 16:16:49 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/16 18:25:27 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,14 @@ typedef	struct	s_clist
 	int				data;
 }				t_clist;
 
-int				is_valid_input(int argc, char **argv, t_clist **stack_a);
-int				is_sorted(t_clist *stack);
-int				is_empty(t_clist *stack);
+typedef struct	s_stack
+{
+	t_clist			*head;
+	unsigned int	node_count;
+}				t_stack;
+
+int				is_valid_input(int argc, char **argv, t_stack **stack);
+int				is_sorted(t_stack *stack);
+int				is_empty(t_stack *stack);
 
 #endif

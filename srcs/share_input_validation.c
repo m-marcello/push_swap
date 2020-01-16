@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 16:05:14 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/15 13:17:35 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/16 18:34:03 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,26 @@
 ** checks for duplicate values in the stack
 **
 ** params
-**	t_clist **head		pointer to first element of stack a
+**	t_stack **stack	pointer to struct representing stack
 ** return
-**	1					when everthing went fine
-**	0					in case of error
+**	1				when everthing went fine
+**	0				in case of error
 */
 
-static int	check_for_duplicates(t_clist **head)
+static int	check_for_duplicates(t_stack **stack)
 {
 	t_clist	*walk_1;
 	t_clist	*walk_2;
 
-	walk_1 = *head;
-	while (walk_1->next != *head)
+	walk_1 = (*stack)->head;
+	while (walk_1->next != (*stack)->head)
 	{
 		walk_2 = walk_1->next;
-		while (walk_2 != head)
+		while (walk_2 != (*stack)->head)
 		{
 			if (walk_1->data == walk_2->data)
 			{
-				free_stack(head);
+				free_stack(stack);
 				return (0);
 			}
 			walk_2 = walk_2->next;
@@ -54,14 +54,14 @@ static int	check_for_duplicates(t_clist **head)
 ** str_arr must only consist of numbers (and their sign)
 **
 ** params
-**	char **str_arr		one input string split into multiple strings at ' '
-**	t_clist **head_a	pointer to first element of stack a
+**	char **str_arr	one input string split into multiple strings at ' '
+**	t_stack **stack	pointer to struct representing stack
 ** return
-**	1					when everthing went fine
-**	0					in case of error
+**	1				when everthing went fine
+**	0				in case of error
 */
 
-static int	array_atoi(char **str_arr, t_clist **head_a)
+static int	array_atoi(char **str_arr, t_stack **stack)
 {
 	int				i;
 	long long int	data;
@@ -75,18 +75,18 @@ static int	array_atoi(char **str_arr, t_clist **head_a)
 		if (data < INT_MIN || INT_MAX < data)
 		{
 			free_str_arr(str_arr);
-			free_stack(head_a);
+			free_stack(stack);
 			return (0);
 		}
-		if (!append_to_stack(data, head_a))
+		if (!append_to_stack(data, stack))
 		{
 			free_str_arr(str_arr);
-			free_stack(head_a);
+			free_stack(stack);
 			return (0);
 		}
 		i++;
 	}
-	return (check_for_duplicates(head_a));
+	return (check_for_duplicates(stack));
 }
 
 /*
@@ -95,22 +95,22 @@ static int	array_atoi(char **str_arr, t_clist **head_a)
 ** to make integers out of the input strings
 **
 ** params
-**	int argc			number of arguments passed to main
-**	char **argv			address of first argument of main
-**	t_clist **head_a	pointer to first element of stack a
+**	int argc		number of arguments passed to main
+**	char **argv		address of first argument of main
+**	t_stack **stack	pointer to struct representing stack a
 ** return
-**	1					when everthing went fine
-**	0					in case of error
+**	1				when everthing went fine
+**	0				in case of error
 */
 
-static int	split_input_strings(int argc, char **argv, t_clist **head_a)
+static int	split_input_strings(int argc, char **argv, t_stack **stack)
 {
 	int		i;
 
 	i = 0;
 	while (i < argc)
 	{
-		if (!array_atoi(ft_strsplit(argv[i], ' '), head_a))
+		if (!array_atoi(ft_strsplit(argv[i], ' '), stack))
 			return (0);
 		i++;
 	}
@@ -126,15 +126,15 @@ static int	split_input_strings(int argc, char **argv, t_clist **head_a)
 ** multiple spaces are supported
 **
 ** params
-**	int argc			number of arguments passed to main
-**	char **argv			address of first argument of main
-**	t_clist **head_a	pointer to first element of stack a
+**	int argc		number of arguments passed to main
+**	char **argv		address of first argument of main
+**	t_stack **stack	pointer to struct representing stack a
 ** return
-**	1					in case of valid input
-**	0					in case of invalid input
+**	1				in case of valid input
+**	0				in case of invalid input
 */
 
-int			is_valid_input(int argc, char **argv, t_clist **head_a)
+int			is_valid_input(int argc, char **argv, t_stack **stack)
 {
 	int		i;
 	int		j;
@@ -153,7 +153,7 @@ int			is_valid_input(int argc, char **argv, t_clist **head_a)
 		}
 		i++;
 	}
-	if (!split_input_strings(argc, argv, head_a))
+	if (!split_input_strings(argc, argv, stack))
 		return (0);
 	return (1);
 }
