@@ -6,15 +6,15 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 15:15:21 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/16 19:57:18 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/18 15:37:05 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHARE_H
 # define SHARE_H
 
-# define INT_MAX = 2147483647
-# define INT_MIN = -2147483648
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 
 typedef	struct	s_clist
 {

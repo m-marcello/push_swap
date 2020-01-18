@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 16:05:14 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/16 19:54:09 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/18 15:37:46 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,14 @@ static int	array_atoi(char **str_arr, t_stack **stack)
 	long long int	data;
 
 	i = 0;
-	if (str_arr = 0)
+	if (str_arr == 0)
 		return (0);
 	while (str_arr[i])
 	{
 		data = ft_atoi(str_arr[i]);
 		if (data < INT_MIN || INT_MAX < data)
 		{
-			free_str_arr(str_arr);
+			free_str_arr(&str_arr);
 			free_stack(stack);
 			return (0);
 		}

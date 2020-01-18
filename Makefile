@@ -6,7 +6,7 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/07 18:47:20 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/12 17:01:49 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/01/18 16:01:19 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,10 @@ OBJS := $(OBJS_CHECK) $(OBJS_PU_SW) $(OBJS_SHARE)
 
 CFLAGS := -Wall -Wextra -Werror
 
-LIBFT_PATH := libft
-LIBFT_PATH_SED := .\/libft
+LIBFT_PATH := ./libft
 LIBFT := $(LIBFT_PATH)/libft.a
 
-HDRS_PATH := hdrs
+HDRS_PATH := ./hdrs
 INCLUDES := -I $(LIBFT_PATH) -I $(HDRS_PATH)
 HDRS := $(HDRS_PATH)/share.h $(HDRS_PATH)/check.h $(HDRS_PATH)/pu_sw.h
 
@@ -44,7 +43,7 @@ $(NAME2): $(OBJS_PU_SW) $(OBJS_SHARE) $(LIBFT)
 	@echo " ${PLUS} $@"
 
 objs/%.o: srcs/%.c $(HDRS)
-	@$(CC) -c $(CFLAGS) -o $@ $< $(INCLUDES)
+	@$(CC) -c $(CFLAGS) -o $@ $(INCLUDES) $<
 	@echo " ${PLUS} $@"
 
 $(LIBFT): FORCE
