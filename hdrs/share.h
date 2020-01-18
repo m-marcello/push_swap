@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 15:15:21 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/18 15:37:05 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/18 16:43:01 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ int				is_sorted(t_stack *stack);
 int				is_empty(t_stack *stack);
 void			free_stack(t_stack **stack);
 void			free_str_arr(char ***str_arr);
+int				is_valid_input(int argc, char **argv, t_stack **stack);
+int				append_to_stack(int data, t_stack **stack);
 
 #endif

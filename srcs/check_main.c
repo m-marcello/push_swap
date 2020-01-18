@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 14:57:53 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/18 15:35:47 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/18 16:53:21 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		main(int argc, char **argv)
 	// apply_inst(inst, &stack_a, &stack_b);
 	// if (is_sorted(stack_a) && is_empty(stack_b))
 	// 	write(1, "OK\n", 3);
-	// else
-	// 	write(1, "KO\n", 3);
+	else
+		write(1, "KO\n", 3);
 	return (0);
 }

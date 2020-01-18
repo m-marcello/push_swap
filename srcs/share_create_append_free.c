@@ -6,11 +6,12 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 14:25:06 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/18 15:30:25 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/18 16:52:41 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "share.h"
+#include <stdlib.h>
 
 /*
 ** -------------------------------------------------------------------------- **
@@ -49,7 +50,7 @@ void		free_stack(t_stack **stack)
 	while (walk)
 	{
 		walk = walk->next;
-		free_node((walk->prev));
+		free_node(&(walk->prev));
 	}
 	(*stack)->head = 0;
 	(*stack)->node_count = 0;
@@ -65,7 +66,7 @@ void		free_stack(t_stack **stack)
 **	char	***arr	address of the string array
 */
 
-void		free_str_array(char ***str_arr)
+void		free_str_arr(char ***str_arr)
 {
 	int		i;
 	int		j;
@@ -123,7 +124,7 @@ static int	create_node(t_clist **node, int data)
 **	0				in case of error
 */
 
-void		append_to_stack(int data, t_stack **stack)
+int			append_to_stack(int data, t_stack **stack)
 {
 	t_clist	*new_node;
 

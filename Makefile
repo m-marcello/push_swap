@@ -6,7 +6,7 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/07 18:47:20 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/18 16:01:19 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/01/18 17:01:45 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,11 @@ OBJS := $(OBJS_CHECK) $(OBJS_PU_SW) $(OBJS_SHARE)
 
 CFLAGS := -Wall -Wextra -Werror
 
-LIBFT_PATH := ./libft
+LIBFT_PATH := libft
 LIBFT := $(LIBFT_PATH)/libft.a
 
-HDRS_PATH := ./hdrs
-INCLUDES := -I $(LIBFT_PATH) -I $(HDRS_PATH)
+HDRS_PATH := hdrs
+INCLUDES := -I $(HDRS_PATH) -I $(LIBFT_PATH)
 HDRS := $(HDRS_PATH)/share.h $(HDRS_PATH)/check.h $(HDRS_PATH)/pu_sw.h
 
 PLUS := \033[38;5;40m+\033[0;00m
@@ -34,11 +34,11 @@ MINUS := \033[38;5;160m-\033[0;00m
 
 all: $(NAME1) # $(NAME2)
 
-$(NAME1): $(OBJS_CHECK) $(OBJS_SHARE) $(LIBFT)
+$(NAME1): $(LIBFT) $(OBJS_CHECK) $(OBJS_SHARE)
 	@$(CC) -o $@ $^ $(LIBFT)
 	@echo " ${PLUS} $@"
 
-$(NAME2): $(OBJS_PU_SW) $(OBJS_SHARE) $(LIBFT)
+$(NAME2): $(LIBFT) $(OBJS_PU_SW) $(OBJS_SHARE)
 	@$(CC) -o $@ $^ $(LIBFT)
 	@echo " ${PLUS} $@"
 
@@ -65,7 +65,7 @@ re: fclean all
 
 FORCE:
 
-test: $(OBJS) $(LIBFT)
+test: $(OBJS) $(LIBFT) FORCE
 	@make test -C tests | sed -e $$'s/^/.\/tests /'
 
 .PHONY: all clean fclean re FORCE

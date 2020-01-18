@@ -6,7 +6,7 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/08 13:03:52 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/18 15:49:53 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/01/18 17:04:06 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIBFT_PATH := ../libft
 LIBFT := $(LIBFT_PATH)/libft.a
 
 HDRS_PATH := ../hdrs
-INCLUDES := -I$(LIBFT_PATH) -I$(HDRS_PATH)
+INCLUDES := -I $(HDRS_PATH) -I $(LIBFT_PATH)
 HDRS := $(HDRS_PATH)/share.h $(HDRS_PATH)/check.h $(HDRS_PATH)/pu_sw.h
 
 PLUS = \033[38;5;40m+\033[0;00m
@@ -36,8 +36,8 @@ $(NAME): $(TESTS_OBJS) $(OBJS)
 	@$(CC) -o $@ $^ -lcriterion $(LIBFT)
 	@echo " ${PLUS} $@"
 
-%.o: %.c $(HDRS)
-	@$(CC) -c $(CFLAGS) -o $@ $< -I$(LIBFT_PATH)
+objs/%.o: srcs/%.c $(HDRS)
+	@$(CC) -c $(CFLAGS) -o $@ $(INCLUDES) $<
 	@echo " ${PLUS} $@"
 
 clean:
