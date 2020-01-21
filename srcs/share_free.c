@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/20 22:18:26 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/20 22:19:13 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/21 01:34:33 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,16 @@ void		free_stack(t_stack **stack)
 
 	if (*stack == 0)
 		return ;
-	walk = (*stack)->head->next;
-	(*stack)->head->prev->next = 0;
-	free_node(&((*stack)->head));
-	while (walk)
+	if ((*stack)->head != 0)
 	{
-		walk = walk->next;
-		free_node(&(walk->prev));
+		walk = (*stack)->head->next;
+		while ((*stack)->node_count > 1)
+		{
+			walk = walk->next;
+			free_node(&(walk->prev));
+			(*stack)->node_count--;
+		}
+		free_node(&walk);
 	}
 	(*stack)->head = 0;
 	(*stack)->node_count = 0;
