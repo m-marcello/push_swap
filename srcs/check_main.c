@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 14:57:53 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/21 00:03:42 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/21 15:29:01 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		main(int argc, char **argv)
 		/* || is_valid_inst(&inst) == 0 */)
 	{
 		write(2, "Error\n", 6);
+		free_stack(&stack_a);
 		free_stack(&stack_b);
 		return (0);
 	}

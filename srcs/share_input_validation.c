@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 16:05:14 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/21 00:18:17 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/21 15:47:11 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,7 @@ static int	split_input_strings(int argc, char **argv, t_stack **stack)
 	while (i < argc)
 	{
 		if (!array_atoi(ft_strsplit(argv[i], ' '), stack))
-		{
-			free_stack(stack);
 			return (0);
-		}
 		i++;
 	}
 	return (1);
@@ -145,9 +142,9 @@ int			is_valid_input(int argc, char **argv, t_stack **stack)
 		j = 0;
 		while (argv[i][j] != 0)
 		{
-			if (((ft_isdigit(argv[i][j]) == 0) && (argv[i][j] != ' '))
-				|| ((argv[i][j] == '-' || argv[i][j] == '+') && j != 0
-				&& argv[i][j - 1] != ' ' && argv[i][j + 1] != 0))
+			if (!ft_isdigit(argv[i][j]) && (argv[i][j] != ' ')
+				&& (argv[i][j] == '-' || argv[i][j] == '+') && j != 0
+				&& argv[i][j - 1] != ' ' && argv[i][j + 1] != 0)
 				return (0);
 			j++;
 		}

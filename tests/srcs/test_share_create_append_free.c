@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 16:55:12 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/21 01:01:09 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/21 20:31:43 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "check.h"
 #include "pu_sw.h"
 
-Test(sh_stack_free, free_1_node, .signal = SIGSEGV)
+Test(sh_stack_free, free_node, .signal = SIGSEGV)
 {
 	t_clist	*head = 0;
 	t_stack	*stack = 0;
@@ -72,48 +72,44 @@ Test(sh_stack_free, free_4_nodes, .signal = SIGSEGV)
 
 Test(sh_stack_create_append, create_first_node_valid_pos)
 {
-	t_clist	*head_1;
-	t_clist	*head_2;
-	t_stack	*stack_1;
-	t_stack	*stack_2;
+	t_clist	*head;
+	t_stack	*stack;
 
-	create_stack(&stack_1);
-	cr_assert(append_to_stack(5, &stack_1) == 1, "first node should have been created");
-	head_1 = stack_1->head;
-	cr_assert(head_1->next == head_1, "first node incorrect");
-	cr_assert(head_1->prev == head_1, "first node incorrect");
-	cr_assert(head_1->data == 5, "first node incorrect");
-	create_stack(&stack_2);
-	head_2 = stack_2->head;
-	cr_assert(append_to_stack(0, &stack_2) == 1, "first node should have been created");
-	cr_assert(head_2->next == head_2, "first node incorrect");
-	cr_assert(head_2->prev == head_2, "first node incorrect");
-	cr_assert(head_2->data == 0, "first node incorrect");
-	free_stack(&stack_1);
-	free_stack(&stack_2);
+	create_stack(&stack);
+	cr_assert(append_to_stack(5, &stack) == 1, "first node should have been created");
+	head = stack->head;
+	cr_assert(head->next == head, "first node incorrect");
+	cr_assert(head->prev == head, "first node incorrect");
+	cr_assert(head->data == 5, "first node incorrect");
+	free_stack(&stack);
 }
 
-Test(sh_stack_create_append, create_1_node_valid_neg)
+Test(sh_stack_create_append, create_first_node_valid_zero)
 {
-	t_clist	*head_1;
-	t_clist	*head_2;
-	t_stack	*stack_1;
-	t_stack	*stack_2;
+	t_clist	*head;
+	t_stack	*stack;
 
-	create_stack(&stack_1);
-	cr_assert(append_to_stack(-9792, &stack_1) == 1, "first node should have been created");
-	head_1 = stack_1->head;
-	cr_assert(head_1->next == head_1, "first node incorrect");
-	cr_assert(head_1->prev == head_1, "first node incorrect");
-	cr_assert(head_1->data == -9792, "first node incorrect");
-	create_stack(&stack_2);
-	cr_assert(append_to_stack(-2147483648, &stack_2) == 1, "first node should have been created");
-	head_2 = stack_2->head;
-	cr_assert(head_2->next == head_2, "first node incorrect");
-	cr_assert(head_2->prev == head_2, "first node incorrect");
-	cr_assert(head_2->data == -2147483648, "first node incorrect");
-	free_stack(&stack_1);
-	free_stack(&stack_2);
+	create_stack(&stack);
+	cr_assert(append_to_stack(0, &stack) == 1, "first node should have been created");
+	head = stack->head;
+	cr_assert(head->next == head, "first node incorrect");
+	cr_assert(head->prev == head, "first node incorrect");
+	cr_assert(head->data == 0, "first node incorrect");
+	free_stack(&stack);
+}
+
+Test(sh_stack_create_append, create_first_node_valid_neg)
+{
+	t_clist	*head;
+	t_stack	*stack;
+
+	create_stack(&stack);
+	cr_assert(append_to_stack(-9792, &stack) == 1, "first node should have been created");
+	head = stack->head;
+	cr_assert(head->next == head, "first node incorrect");
+	cr_assert(head->prev == head, "first node incorrect");
+	cr_assert(head->data == -9792, "first node incorrect");
+	free_stack(&stack);
 }
 
 Test(sh_stack_create_append, append_2_node_valid)
@@ -122,8 +118,8 @@ Test(sh_stack_create_append, append_2_node_valid)
 	t_stack	*stack = 0;
 
 	create_stack(&stack);
-	head = stack->head;
 	cr_assert(append_to_stack(0, &stack) == 1,  "first node should have been created");
+	head = stack->head;
 	cr_assert(append_to_stack(-16782, &stack) == 1,  "second node should have been created");
 	cr_assert(head->next->next == head, "second node incorrect");
 	cr_assert(head->prev->prev == head, "second node incorrect");
