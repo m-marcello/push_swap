@@ -6,7 +6,7 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/08 13:03:52 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/18 17:04:06 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/01/21 00:44:55 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ include ./srcs/tests_mini_srcs
 
 NAME := test
 
-OBJS := $(MINI_SOURCES:%=../objs/%.o)
+OBJS := $(MINI_SOURCES_SHARE:%=../objs/%.o) $(MINI_SOURCES_PU_SW:%=../objs/%.o)
 TESTS_OBJS := $(TESTS_MINI_SOURCES:%=objs/%.o)
 
 CFLAGS := -Wall -Wextra -Werror
@@ -32,7 +32,7 @@ MINUS = \033[38;5;160m-\033[0;00m
 
 all: $(NAME)
 
-$(NAME): $(TESTS_OBJS) $(OBJS)
+$(NAME): $(OBJS) $(TESTS_OBJS)
 	@$(CC) -o $@ $^ -lcriterion $(LIBFT)
 	@echo " ${PLUS} $@"
 

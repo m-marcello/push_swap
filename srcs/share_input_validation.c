@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 16:05:14 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/18 16:51:40 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/21 00:18:17 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 **	0				in case of error
 */
 
-static int	check_for_duplicates(t_stack **stack)
+int	check_for_duplicates(t_stack **stack)
 {
 	t_clist	*walk_1;
 	t_clist	*walk_2;
@@ -36,10 +36,7 @@ static int	check_for_duplicates(t_stack **stack)
 		while (walk_2 != (*stack)->head)
 		{
 			if (walk_1->data == walk_2->data)
-			{
-				free_stack(stack);
 				return (0);
-			}
 			walk_2 = walk_2->next;
 		}
 		walk_1 = walk_1->next;
@@ -76,17 +73,16 @@ static int	array_atoi(char **str_arr, t_stack **stack)
 		if (data < INT_MIN || INT_MAX < data)
 		{
 			free_str_arr(&str_arr);
-			free_stack(stack);
 			return (0);
 		}
 		if (!append_to_stack(data, stack))
 		{
 			free_str_arr(&str_arr);
-			free_stack(stack);
 			return (0);
 		}
 		i++;
 	}
+	free_str_arr(&str_arr);
 	return (check_for_duplicates(stack));
 }
 
@@ -112,7 +108,10 @@ static int	split_input_strings(int argc, char **argv, t_stack **stack)
 	while (i < argc)
 	{
 		if (!array_atoi(ft_strsplit(argv[i], ' '), stack))
+		{
+			free_stack(stack);
 			return (0);
+		}
 		i++;
 	}
 	return (1);
@@ -146,15 +145,13 @@ int			is_valid_input(int argc, char **argv, t_stack **stack)
 		j = 0;
 		while (argv[i][j] != 0)
 		{
-			if (!ft_isdigit(argv[i][j]) || !(argv[i][j] != ' ')
-				|| ((argv[i][j] == '-' || argv[i][j] != '+') && j != 0
+			if (((ft_isdigit(argv[i][j]) == 0) && (argv[i][j] != ' '))
+				|| ((argv[i][j] == '-' || argv[i][j] == '+') && j != 0
 				&& argv[i][j - 1] != ' ' && argv[i][j + 1] != 0))
 				return (0);
 			j++;
 		}
 		i++;
 	}
-	if (!split_input_strings(argc, argv, stack))
-		return (0);
-	return (1);
+	return (split_input_strings(argc, argv, stack));
 }

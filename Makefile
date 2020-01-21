@@ -6,7 +6,7 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/07 18:47:20 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/18 17:01:45 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/01/21 00:49:41 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ NAME1 := checker
 NAME2 := push_swap
 
 OBJS_SHARE := $(MINI_SOURCES_SHARE:%=objs/%.o)
-OBJS_CHECK := $(MINI_SOURCES_CHECK:%=objs/%.o)
-OBJS_PU_SW := $(MINI_SOURCES_PU_SW:%=objs/%.o)
+OBJS_CHECK := $(MINI_SOURCES_CHECK:%=objs/%.o) objs/check_main.o 
+OBJS_PU_SW := $(MINI_SOURCES_PU_SW:%=objs/%.o) objs/pu_sw_main.o
 OBJS := $(OBJS_CHECK) $(OBJS_PU_SW) $(OBJS_SHARE)
 
 CFLAGS := -Wall -Wextra -Werror
@@ -34,16 +34,16 @@ MINUS := \033[38;5;160m-\033[0;00m
 
 all: $(NAME1) # $(NAME2)
 
-$(NAME1): $(LIBFT) $(OBJS_CHECK) $(OBJS_SHARE)
-	@$(CC) -o $@ $^ $(LIBFT)
+$(NAME1): $(LIBFT) $(OBJS_CHECK) $(OBJS_SHARE) # REMOVE -g FLAG
+	@$(CC) -g -o $@ $^ $(LIBFT)
 	@echo " ${PLUS} $@"
 
 $(NAME2): $(LIBFT) $(OBJS_PU_SW) $(OBJS_SHARE)
 	@$(CC) -o $@ $^ $(LIBFT)
 	@echo " ${PLUS} $@"
 
-objs/%.o: srcs/%.c $(HDRS)
-	@$(CC) -c $(CFLAGS) -o $@ $(INCLUDES) $<
+objs/%.o: srcs/%.c $(HDRS) # REMOVE -g FLAG
+	@$(CC) -g -c $(CFLAGS) -o $@ $(INCLUDES) $<
 	@echo " ${PLUS} $@"
 
 $(LIBFT): FORCE
@@ -62,6 +62,8 @@ lfclean:
 	@rm -fv $(NAME) | sed -e $$'s/^/ $(MINUS) /'
 
 re: fclean all
+
+lre: lfclean all
 
 FORCE:
 
