@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/20 22:18:26 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/22 17:14:52 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/22 21:32:52 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,6 @@ void		free_stack(t_stack **stack)
 		free_node(&to_free);
 		(*stack)->node_count--;
 	}
-	// if ((*stack)->head != 0)
-	// {
-	// 	walk = (*stack)->head->next;
-	// 	while ((*stack)->node_count > 1)
-	// 	{
-	// 		walk = walk->next;
-	// 		free_node(&(walk->prev));
-	// 		(*stack)->node_count--;
-	// 	}
-	// 	free_node(&walk);
-	// }
 	(*stack)->head = 0;
 	free(*stack);
 	*stack = 0;
@@ -81,20 +70,24 @@ void		free_str_arr(char ***str_arr)
 {
 	int		i;
 	int		j;
+	char	**to_free;
 
+	if (**str_arr == 0)
+		return ;
+	to_free = *str_arr;
 	i = 0;
-	while ((*str_arr)[i])
+	while (to_free[i])
 	{
 		j = 0;
-		while ((*str_arr)[i][j])
+		while (to_free[i][j])
 		{
-			(*str_arr)[i][j] = 0;
+			to_free[i][j] = 0;
 			j++;
 		}
-		free((*str_arr)[i]);
-		(*str_arr)[i] = 0;
+		free(to_free[i]);
+		to_free[i] = 0;
 		i++;
 	}
-	free(**str_arr);
-	**str_arr = 0;
+	free(to_free);
+	to_free = 0;
 }

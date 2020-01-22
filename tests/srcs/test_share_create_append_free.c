@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 16:55:12 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/22 16:59:39 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/22 21:37:19 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,12 @@
 
 Test(sh_stack_free, free_node, .signal = SIGSEGV)
 {
-	t_clist	*head = 0;
 	t_stack	*stack = 0;
 
 	create_stack(&stack);
 	append_to_stack(0, &stack);
-	head = stack->head;
 	free_stack(&stack);
-	head->data = 42;
+	stack->head->data = 42;
 }
 
 Test(sh_stack_free, free_2_nodes, .signal = SIGSEGV)
@@ -68,6 +66,20 @@ Test(sh_stack_free, free_4_nodes, .signal = SIGSEGV)
 	head = stack->head;
 	free_stack(&stack);
 	head->next->next->next->next->data = 42;
+}
+
+Test(sh_str_arr_free, free_arr_one_item1, .signal = SIGSEGV)
+{
+	char	**str_arr = ft_strsplit("1", ' ');
+	free_str_arr(&str_arr);
+	str_arr[0][0] = '4';
+}
+
+Test(sh_str_arr_free, free_arr_two_items, .signal = SIGSEGV)
+{
+	char	**str_arr = ft_strsplit("1 2", ' ');
+	free_str_arr(&str_arr);
+	str_arr[1][0] = '0';
 }
 
 Test(sh_stack_create_append, create_first_node_valid_pos)
