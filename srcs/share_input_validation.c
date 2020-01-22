@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 16:05:14 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/21 15:47:11 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/22 16:09:09 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,9 +142,9 @@ int			is_valid_input(int argc, char **argv, t_stack **stack)
 		j = 0;
 		while (argv[i][j] != 0)
 		{
-			if (!ft_isdigit(argv[i][j]) && (argv[i][j] != ' ')
-				&& (argv[i][j] == '-' || argv[i][j] == '+') && j != 0
-				&& argv[i][j - 1] != ' ' && argv[i][j + 1] != 0)
+			if (!(ft_isdigit(argv[i][j]) || (argv[i][j] == ' ')
+				|| ((argv[i][j] == '-' || argv[i][j] == '+') &&
+				(j == 0 || argv[i][j - 1] == ' ') && argv[i][j + 1] != 0)))
 				return (0);
 			j++;
 		}

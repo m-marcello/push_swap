@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/20 22:18:26 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/21 01:34:33 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/22 17:14:52 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,30 @@ static void	free_node(t_clist **node)
 void		free_stack(t_stack **stack)
 {
 	t_clist	*walk;
+	t_clist	*to_free;
 
 	if (*stack == 0)
 		return ;
-	if ((*stack)->head != 0)
+	walk = (*stack)->head;
+	while ((*stack)->node_count > 0)
 	{
-		walk = (*stack)->head->next;
-		while ((*stack)->node_count > 1)
-		{
-			walk = walk->next;
-			free_node(&(walk->prev));
-			(*stack)->node_count--;
-		}
-		free_node(&walk);
+		to_free = walk;
+		walk = walk->next;
+		free_node(&to_free);
+		(*stack)->node_count--;
 	}
+	// if ((*stack)->head != 0)
+	// {
+	// 	walk = (*stack)->head->next;
+	// 	while ((*stack)->node_count > 1)
+	// 	{
+	// 		walk = walk->next;
+	// 		free_node(&(walk->prev));
+	// 		(*stack)->node_count--;
+	// 	}
+	// 	free_node(&walk);
+	// }
 	(*stack)->head = 0;
-	(*stack)->node_count = 0;
 	free(*stack);
 	*stack = 0;
 }

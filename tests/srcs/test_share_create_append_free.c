@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 16:55:12 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/21 20:31:43 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/22 16:59:39 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,12 +139,13 @@ Test(sh_stack_create_append, append_3_node_valid)
 	cr_assert(append_to_stack(3, &stack) == 1,  "second node should have been created");
 	cr_assert(append_to_stack(2, &stack) == 1,  "third node should have been created");
 	cr_assert(head->data == 4, "first node incorrect");
-	cr_assert(head->next == head->prev->prev->prev, "second node incorrect");
-	cr_assert(head->next->data == head->prev->prev->prev->data, "second node incorrect");
+	cr_assert(head->next == head->prev->prev, "second node incorrect");
+	cr_assert(head->next->data == head->prev->prev->data, "second node incorrect");
 	cr_assert(head->next->data == 3, "second node incorrect");
-	cr_assert(head->next->next == head->prev->prev, "third node incorrect");
-	cr_assert(head->next->next->data == head->prev->prev->data, "third node incorrect");
+	cr_assert(head->next->next == head->prev, "third node incorrect");
+	cr_assert(head->next->next->data == head->prev->data, "third node incorrect");
 	cr_assert(head->next->next->data == 2, "third node incorrect");
+	cr_assert(head->next->next->next->data == 4, "circle not linked correctly");
 	cr_assert(head->prev->prev->prev == head, "linking nodes incorrect");
 	free_stack(&stack);
 }
@@ -157,11 +158,18 @@ Test(sh_stack_create_append, append_4_node_valid)
 	create_stack(&stack);
 	cr_assert(append_to_stack(3792, &stack) == 1,  "first node should have been created");
 	cr_assert(append_to_stack(-36782, &stack) == 1,  "second node should have been created");
-	head = stack->head;
 	cr_assert(append_to_stack(2, &stack) == 1,  "third node should have been created");
 	cr_assert(append_to_stack(0, &stack) == 1,  "fourth node should have been created");
-	cr_assert(head->next->next == head->prev->prev->prev, "second node incorrect");
-	cr_assert(head->next->next->next == head->prev->prev, "third node incorrect");
+	head = stack->head;
+	cr_assert(head->prev->data == 0, "fourth node incorrect");
+	cr_assert(head->prev->prev->data == 2, "third node incorrect");
+	cr_assert(head->prev->prev->prev->data == -36782, "second node incorrect");
+	cr_assert(head->prev->prev->prev->prev->data == 3792, "circle not linked correctly");
+	cr_assert(head->prev->prev->prev->prev->prev->data == 0, "fourth node incorrect");
+
+	cr_assert(head->next->data == head->prev->prev->prev->data, "second node incorrect");
+	cr_assert(head->next->next == head->prev->prev, "third node incorrect");
+	cr_assert(head->next->next->next == head->prev, "fourth node incorrect");
 	cr_assert(head->next->next->next->next == head, "linking nodes incorrect");
 	free_stack(&stack);
 }

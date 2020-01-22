@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 17:10:41 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/21 22:25:28 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/22 16:10:14 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -746,7 +746,7 @@ Test(sh_input_validation, multi_string_non_num_char_end1)
 	input[1] = "-2892";
 	input[2] = "2";
 	input[3] = "-5";
-	input[4] = "1w";
+	input[4] = "1-";
 	cr_assert(is_valid_input(5, input, &stack_a) == 0 , "multi string input ending with non num charackter should be invalid.");
 	free_stack(&stack_a);
 }
