@@ -6,8 +6,9 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/08 17:26:13 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/23 14:19:37 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/01/23 19:28:50 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 TESTS_MINI_SOURCES := test_share_input_validation test_share_create_append_free\
+test_share_operations

@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 19:09:31 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/23 19:26:15 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/23 19:40:19 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 **	t_stack **stack		pointer to struct representing stack
 */
 
-void	operations_rotate(t_stack **stack)
+void	operation_rotate(t_stack **stack)
 {
 	t_clist	*new_head;
 
@@ -32,13 +32,13 @@ void	operations_rotate(t_stack **stack)
 
 /*
 ** -------------------------------------------------------------------------- **
-** reverse rotates stack by 1 element, lase node becomes first
+** reverse rotates stack by 1 element, last node becomes first
 **
 ** params
 **	t_stack **stack		pointer to struct representing stack
 */
 
-void	operations_rev_rotate(t_stack **stack)
+void	operation_rev_rotate(t_stack **stack)
 {
 	t_clist	*new_head;
 
@@ -57,23 +57,23 @@ void	operations_rev_rotate(t_stack **stack)
 **	t_stack **stack_2	pointer to struct representing the other stack
 */
 
-void	operations_rr(t_stack **stack_1, t_stack **stack_2)
+void	operation_rr(t_stack **stack_1, t_stack **stack_2)
 {
-	operations_rotate(stack_1);
-	operations_rotate(stack_2);
+	operation_rotate(stack_1);
+	operation_rotate(stack_2);
 }
 
 /*
 ** -------------------------------------------------------------------------- **
-** reverse rotates two stacks by 1 element, lase node becomes first
+** reverse rotates two stacks by 1 element, last node becomes first
 **
 ** params
 **	t_stack **stack_1	pointer to struct representing one stack
 **	t_stack **stack_2	pointer to struct representing the other stack
 */
 
-void	operations_rrr(t_stack **stack_1, t_stack **stack_2)
+void	operation_rrr(t_stack **stack_1, t_stack **stack_2)
 {
-	operations_rev_rotate(stack_1);
-	operations_rev_rotate(stack_2);
+	operation_rev_rotate(stack_1);
+	operation_rev_rotate(stack_2);
 }
