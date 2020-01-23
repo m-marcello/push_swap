@@ -6,16 +6,16 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 17:10:41 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/22 16:10:14 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/23 14:20:57 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <criterion/criterion.h>
 #include <criterion/assert.h>
-#include "libft.h"
 #include "share.h"
-#include "check.h"
-#include "pu_sw.h"
+
+int		check_for_duplicates(t_stack **stack);
+int		create_stack(t_stack **stack);
 
 Test(sh_input_validation, one_string_valid1)
 {

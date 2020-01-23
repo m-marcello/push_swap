@@ -6,16 +6,16 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 16:55:12 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/22 21:37:19 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/23 14:20:49 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <criterion/criterion.h>
 #include <criterion/assert.h>
-#include "libft.h"
 #include "share.h"
-#include "check.h"
-#include "pu_sw.h"
+#include "libft.h"
+
+int		create_stack(t_stack **stack);
 
 Test(sh_stack_free, free_node, .signal = SIGSEGV)
 {
