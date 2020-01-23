@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 19:41:47 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/23 19:49:00 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/23 19:57:41 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,14 @@
 
 void	operation_push(t_stack **dst, t_stack **src)
 {
+	t_clist	*to_push;
+	t_clist	*temp_save;
+
 	if ((*src)->node_count == 0)
 		return ;
+	to_push = (*src)->head;
+	temp_save = (*src)->head->next;
+	
 }
 
 /*
