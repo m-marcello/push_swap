@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 15:15:21 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/23 14:21:35 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/23 19:26:24 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ int				is_valid_input(int argc, char **argv, t_stack **stack);
 int				append_to_stack(int data, t_stack **stack);
 void			operation_push(t_stack **dst, t_stack **src);
 void			operation_swap(t_stack **stack);
-void			operation_sswap(t_stack **stack_1, t_stack **stack_2);
+void			operation_ss(t_stack **stack_1, t_stack **stack_2);
 void			operation_rotate(t_stack **stack);
-void			operation_rrotate(t_stack **stack_1, t_stack **stack_2);
+void			operation_rr(t_stack **stack_1, t_stack **stack_2);
 void			operation_rev_rotate(t_stack **stack);
-void			operation_rev_rrotate(t_stack **stack_1, t_stack **stack_2);
+void			operation_rrr(t_stack **stack_1, t_stack **stack_2);
 
 #endif
