@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 16:55:12 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/23 14:20:49 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/24 16:10:07 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,22 +121,35 @@ Test(sh_stack_create_append, create_first_node_valid_neg)
 	cr_assert(head->next == head, "first node incorrect");
 	cr_assert(head->prev == head, "first node incorrect");
 	cr_assert(head->data == -9792, "first node incorrect");
+	cr_assert(head->prev->data == -9792, "first node incorrect");
+	cr_assert(head->next->data == -9792, "first node incorrect");
 	free_stack(&stack);
 }
 
 Test(sh_stack_create_append, append_2_node_valid)
 {
-	t_clist	*head = 0;
+	t_clist	*head;
+	t_clist	*second;
 	t_stack	*stack = 0;
 
 	create_stack(&stack);
 	cr_assert(append_to_stack(0, &stack) == 1,  "first node should have been created");
-	head = stack->head;
 	cr_assert(append_to_stack(-16782, &stack) == 1,  "second node should have been created");
-	cr_assert(head->next->next == head, "second node incorrect");
-	cr_assert(head->prev->prev == head, "second node incorrect");
+	head = stack->head;
+	second = head->next;
+	cr_assert(head == head->next->next, "second node incorrect");
+	cr_assert(head == head->prev->prev, "second node incorrect");
+	cr_assert(head->next == head->next->next->next, "first node incorrect");
+	cr_assert(head->prev == head->prev->prev->prev, "first node incorrect");
+	cr_assert(head == second->next, "linking incorrect");
+	cr_assert(head == second->prev, "linking incorrect");
+	cr_assert(second == head->next, "linking incorrect");
+	cr_assert(second == head->prev, "linking incorrect");
 	cr_assert(head->data == 0, "first node incorrect");
+	cr_assert(head->prev->data == -16782, "second node incorrect");
 	cr_assert(head->next->data == -16782, "second node incorrect");
+	cr_assert(head->prev->prev->data == 0, "second node incorrect");
+	cr_assert(head->next->next->data == 0, "second node incorrect");
 	free_stack(&stack);
 }
 
