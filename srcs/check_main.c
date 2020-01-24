@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 14:57:53 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/22 18:32:30 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/24 20:41:58 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		main(int argc, char **argv)
 	if (create_both_stacks(&stack_a, &stack_b) == 0)
 		return (0);
 	if (is_valid_input(argc - 1, &argv[1], &stack_a) == 0
-		/* || is_valid_inst(&inst) == 0 */)
+		/* || instruction_handler(&stack_a, &stack_b) == 0 */)
 	{
 		write(2, "Error\n", 6);
 		free_stack(&stack_a);
