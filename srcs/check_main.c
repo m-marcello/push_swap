@@ -6,11 +6,10 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 14:57:53 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/24 20:41:58 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/25 18:46:10 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "share.h"
 #include "check.h"
 #include <unistd.h>
 
