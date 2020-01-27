@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 19:41:47 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/24 17:01:15 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/27 13:33:15 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	operation_push_2nd(t_stack **dst, t_clist **to_push)
 **	t_stack **src	pointer to struct representing src
 */
 
-void	operation_push(t_stack **dst, t_stack **src)
+void		operation_push(t_stack **dst, t_stack **src)
 {
 	t_clist	*to_push;
 
@@ -75,7 +75,7 @@ void	operation_push(t_stack **dst, t_stack **src)
 **	t_stack **stack		pointer to struct representing stack
 */
 
-void	operation_swap(t_stack **stack)
+void		operation_swap(t_stack **stack)
 {
 	t_clist	*new_head;
 
@@ -105,9 +105,8 @@ void	operation_swap(t_stack **stack)
 **	t_stack **stack_2	pointer to struct representing the other stack
 */
 
-void	operation_ss(t_stack **stack_1, t_stack **stack_2)
+void		operation_ss(t_stack **stack_1, t_stack **stack_2)
 {
 	operation_swap(stack_1);
 	operation_swap(stack_2);
 }
-

@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 16:05:14 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/22 21:33:40 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/27 13:33:37 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 **	0				in case of error
 */
 
-int	check_for_duplicates(t_stack **stack)
+int			check_for_duplicates(t_stack **stack)
 {
 	t_clist	*walk_1;
 	t_clist	*walk_2;
