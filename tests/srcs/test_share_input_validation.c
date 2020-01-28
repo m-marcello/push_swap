@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 17:10:41 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/23 14:20:57 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/28 15:47:37 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,7 +202,7 @@ Test(sh_input_validation, one_string_non_num_char_mid1)
 	t_stack	*stack_a;
 
 	create_stack(&stack_a);
-	char	*input = "78 1107 h2 -107";
+	char	*input = "78 1107 - -107";
 	cr_assert(is_valid_input(1, &input, &stack_a) == 0 , "one string input with non num charackter in the middle should be invalid.");
 	free_stack(&stack_a);
 }
