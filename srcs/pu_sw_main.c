@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/28 16:58:37 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/30 14:15:24 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/30 22:13:07 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static int	get_options(char **argv, int *options)
 		*options = 1;
 		return (1);
 	}
+	else
+		*options = 0;
 	return (0);
 }
 
@@ -57,7 +59,6 @@ int		main(int argc, char **argv)
 	int		options;
 	t_stack	*stack_a;
 	t_stack *stack_b;
-	
 
 	if (argc == 1 ||
 		(argc == 2 && (ft_strequ(argv[1], "-v") || ft_strequ(argv[1], "-c"))))

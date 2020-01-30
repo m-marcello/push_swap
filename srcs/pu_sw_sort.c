@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   pu_sw.h                                            :+:    :+:            */
+/*   pu_sw_sort.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/12 15:25:08 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/30 22:04:00 by mmarcell      ########   odam.nl         */
+/*   Created: 2020/01/30 22:08:08 by mmarcell       #+#    #+#                */
+/*   Updated: 2020/01/30 22:26:59 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PU_SW_H
-# define PU_SW_H
+#include "pu_sw.h"
 
-# include "share.h"
-
-typedef struct	s_print
+void	sort_stack(int options, t_stack **stack_a, t_stack **stack_b)
 {
-	int		color;
-	char	*inst;
-	int		count_a;
-	int		count_b;
-	int		col_a;
-	int		col_b;
-	int		col_first;
-	int		col_second;
-	int		col_last;
-}				t_print;
+	t_print *p_info;
 
-void			visualizer(t_print *p_info, char *inst, t_stack *stack_a,
-				t_stack *stack_b);
-
-#endif
+	if (options > 0)
+	{
+		p_info = (t_print*)malloc(sizeof(t_print));
+		if (p_info == 0)
+			return ;
+		ft_bzero(p_info, sizeof(p_info));
+		visualizer(p_info, "start", *stack_a, *stack_b);
+		p_info->color = options - 1;
+	}
+}

@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/24 19:20:21 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/30 15:07:24 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/30 22:27:02 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,28 @@
 
 static void	set_color_info(t_print *p_info)
 {
-	if (ft_strequ(inst, "sa") || ft_strequ(inst, "pa")
-		|| ft_strequ(inst, "ra") || ft_strequ(inst, "rra"))
-	{
-		p_info->col_a = 1;
-		p_info->col_b = 0;
-	}
-	if (ft_strequ(inst, "sa") || ft_strequ(inst, "pa")
-		|| ft_strequ(inst, "ra") || ft_strequ(inst, "rra"))
-	{
-		p_info->col_a = 1;
-		p_info->col_b = 0;
-	}
-	if (ft_strequ(inst, "ss")|| ft_strequ(inst, "rr") || ft_strequ(inst, "rrr"))
-	{
-		p_info->col_a = 1;
-		p_info->col_b = 1;
-	}
-	
+	p_info->col_a = (ft_strequ(p_info->inst, "pa")
+		|| ft_strequ(p_info->inst, "sa") || ft_strequ(p_info->inst, "ss")
+		|| ft_strequ(p_info->inst, "ra") || ft_strequ(p_info->inst, "rr")
+		|| ft_strequ(p_info->inst, "rra") || ft_strequ(p_info->inst, "rrr"));
+	p_info->col_b = (ft_strequ(p_info->inst, "pb")
+		|| ft_strequ(p_info->inst, "sb") || ft_strequ(p_info->inst, "ss")
+		|| ft_strequ(p_info->inst, "rb") || ft_strequ(p_info->inst, "rr")
+		|| ft_strequ(p_info->inst, "rrb") || ft_strequ(p_info->inst, "rrr"));
+	p_info->col_first = (ft_strequ(p_info->inst, "pa")
+		|| ft_strequ(p_info->inst, "pb") || ft_strequ(p_info->inst, "sa")
+		|| ft_strequ(p_info->inst, "sb") || ft_strequ(p_info->inst, "ss")
+		|| ft_strequ(p_info->inst, "rra") || ft_strequ(p_info->inst, "rrb")
+		|| ft_strequ(p_info->inst, "rrr"));
+	p_info->col_second = (ft_strequ(p_info->inst, "sa")
+		|| ft_strequ(p_info->inst, "sb") || ft_strequ(p_info->inst, "ss"));
+	p_info->col_last = (ft_strequ(p_info->inst, "ra")
+		|| ft_strequ(p_info->inst, "rb") || ft_strequ(p_info->inst, "rr"));
 }
 
 static void	print_stacks(t_print *p_info, t_clist *walk_a, t_clist *walk_b)
 {
+	
 	while (p_info->count_a > 0 || p_info->count_b > 0)
 	{
 		if (p_info->count_a && p_info->count_b && p_info->color == 0)
