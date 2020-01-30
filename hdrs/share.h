@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 15:15:21 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/24 19:20:12 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/30 13:03:25 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,5 @@ void			operation_rotate(t_stack **stack);
 void			operation_rr(t_stack **stack_1, t_stack **stack_2);
 void			operation_rev_rotate(t_stack **stack);
 void			operation_rrr(t_stack **stack_1, t_stack **stack_2);
-void			visualizer(t_stack *stack_a, t_stack *stack_b);
 
 #endif
