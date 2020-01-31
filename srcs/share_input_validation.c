@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 16:05:14 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/28 16:46:28 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 13:09:11 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,8 @@ int			is_valid_input(int argc, char **argv, t_stack **stack)
 		{
 			if (!(ft_isdigit(argv[i][j]) || (argv[i][j] == ' ')
 				|| ((argv[i][j] == '-' || argv[i][j] == '+') &&
-				ft_isdigit(argv[i][j + 1]))))
+				ft_isdigit(argv[i][j + 1]) &&
+				(j == 0 || argv[i][j - 1] == ' '))))
 				return (0);
 			j++;
 		}
