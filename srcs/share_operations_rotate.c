@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 19:09:31 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/23 19:40:19 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 13:04:23 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@
 **	t_stack **stack		pointer to struct representing stack
 */
 
-void	operation_rotate(t_stack **stack)
+void	operation_rotate(t_stack *stack)
 {
 	t_clist	*new_head;
 
-	if ((*stack)->node_count == 1 || (*stack)->node_count == 0)
+	if (stack->node_count == 1 || stack->node_count == 0)
 		return ;
-	new_head = (*stack)->head->next;
-	(*stack)->head = new_head;
+	new_head = stack->head->next;
+	stack->head = new_head;
 }
 
 /*
@@ -38,14 +38,14 @@ void	operation_rotate(t_stack **stack)
 **	t_stack **stack		pointer to struct representing stack
 */
 
-void	operation_rev_rotate(t_stack **stack)
+void	operation_rev_rotate(t_stack *stack)
 {
 	t_clist	*new_head;
 
-	if ((*stack)->node_count == 1 || (*stack)->node_count == 0)
+	if (stack->node_count == 1 || stack->node_count == 0)
 		return ;
-	new_head = (*stack)->head->prev;
-	(*stack)->head = new_head;
+	new_head = stack->head->prev;
+	stack->head = new_head;
 }
 
 /*
@@ -57,7 +57,7 @@ void	operation_rev_rotate(t_stack **stack)
 **	t_stack **stack_2	pointer to struct representing the other stack
 */
 
-void	operation_rr(t_stack **stack_1, t_stack **stack_2)
+void	operation_rr(t_stack *stack_1, t_stack *stack_2)
 {
 	operation_rotate(stack_1);
 	operation_rotate(stack_2);
@@ -72,7 +72,7 @@ void	operation_rr(t_stack **stack_1, t_stack **stack_2)
 **	t_stack **stack_2	pointer to struct representing the other stack
 */
 
-void	operation_rrr(t_stack **stack_1, t_stack **stack_2)
+void	operation_rrr(t_stack *stack_1, t_stack *stack_2)
 {
 	operation_rev_rotate(stack_1);
 	operation_rev_rotate(stack_2);
