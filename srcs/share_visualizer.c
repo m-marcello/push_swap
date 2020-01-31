@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/24 19:20:21 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/30 22:27:02 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 12:37:48 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,31 +36,29 @@ static void	set_color_info(t_print *p_info)
 
 static void	print_stacks(t_print *p_info, t_clist *walk_a, t_clist *walk_b)
 {
-	
-	while (p_info->count_a > 0 || p_info->count_b > 0)
+	int		count;
+	char	*col_a;
+	char	*col_b;
+
+	count = 1;
+	while (count < p_info->count_a || count < p_info->count_b)
 	{
-		if (p_info->count_a && p_info->count_b && p_info->color == 0)
-		{
-			ft_printf("|%25d  |%25d  |\n", walk_a->data, walk_b->data);
-			walk_a = walk_a->next;
-			walk_b = walk_b->next;
-			--p_info->count_a;
-			--p_info->count_b;
-		}
-		else if (p_info->count_a > 0 && !(p_info->count_b > 0)
-			&& p_info->color == 0)
-		{
-			ft_printf("|%25d  |%25c  |\n", walk_a->data, '-');
-			walk_a = walk_a->next;
-			--p_info->count_a;
-		}
-		else if (!(p_info->count_a > 0) && p_info->count_b > 0
-			&& p_info->color == 0)
-		{
-			ft_printf("|%25c  |%25d  |\n", '-', walk_b->data);
-			walk_b = walk_b->next;
-			--p_info->count_b;
-		}
+		col_a = (p_info->color && p_info->col_a && ((p_info->col_last &&
+			count == p_info->count_a) || (p_info->col_second && count == 2) ||
+			(p_info->col_first && count == 1))) ? COLOR : RESET;
+		col_b = (p_info->color && p_info->col_b && ((p_info->col_last &&
+			count == p_info->count_b) || (p_info->col_second && count == 2) ||
+			(p_info->col_first && count == 1))) ? COLOR : RESET;
+		if (count < p_info->count_a && count < p_info->count_b)
+			ft_printf("|%s%25d%s  |%s%25d%s  |\n", col_a, RESET, col_b,
+				RESET, walk_a->data, walk_b->data);
+		else if (count < p_info->count_a && count >= p_info->count_b)
+			ft_printf("|%s%25d%s  |%25c  |\n", col_a, RESET, walk_a->data,
+				'-');
+		else if (count >= p_info->count_a && count < p_info->count_b)
+			ft_printf("|%25c  |%s%25d%s  |\n", '-', walk_b->data, col_b,
+				RESET);
+		++count;
 	}
 }
 

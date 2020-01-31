@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/25 17:24:03 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/27 19:24:08 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 12:56:19 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 **	0					when it doesn't
 */
 
-static int	apply_instruction(char *inst, t_stack **stack_a, t_stack **stack_b)
+static int	apply_instruction(char *inst, t_stack *stack_a, t_stack *stack_b)
 {
 	if (ft_strequ(inst, "sa"))
 		operation_swap(stack_a);
@@ -70,7 +70,7 @@ static int	apply_instruction(char *inst, t_stack **stack_a, t_stack **stack_b)
 **	0					when a line makes no sense
 */
 
-int			instruction_handler(t_stack **stack_a, t_stack **stack_b)
+int			instruction_handler(t_stack *stack_a, t_stack *stack_b)
 {
 	char	*inst;
 	int		ret;

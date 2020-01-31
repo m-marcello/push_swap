@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 12:29:32 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/25 16:33:38 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 13:06:10 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ Test(sh_operations_push, full_full)
 	last_src = src->head->prev;
 	first_dst = dst->head;
 	last_dst = dst->head->prev;
-	operation_push(&dst, &src);
+	operation_push(dst, src);
 	cr_expect(dst->node_count == 5, "dst node count incorrect");
 	cr_expect(src->node_count == 4, "src node count incorrect");
 	cr_expect(dst->head->data == 2, "data dst head incorrect");
@@ -100,7 +100,7 @@ Test(sh_operations_push, one_two)
 	last_src = src->head->prev;
 	first_dst = dst->head;
 	last_dst = dst->head->prev;
-	operation_push(&dst, &src);
+	operation_push(dst, src);
 	cr_expect(dst->node_count == 2, "dst node count incorrect");
 	cr_expect(src->node_count == 1, "src node count incorrect");
 	cr_expect(dst->head->data == 263, "data dst head incorrect");
@@ -143,7 +143,7 @@ Test(sh_operations_push, two_one)
 	first_src = src->head;
 	first_dst = dst->head;
 	last_dst = dst->head->prev;
-	operation_push(&dst, &src);
+	operation_push(dst, src);
 	cr_expect(dst->node_count == 3, "dst node count incorrect");
 	cr_expect(src->node_count == 0, "src node count incorrect");
 	cr_expect(dst->head->data == 42, "data dst head incorrect");
@@ -184,7 +184,7 @@ Test(sh_operations_push, empty_full)
 	first_src = src->head;
 	second_src = src->head->next;
 	last_src = src->head->prev;
-	operation_push(&dst, &src);
+	operation_push(dst, src);
 	cr_expect(dst->node_count == 1, "dst node count incorrect");
 	cr_expect(src->node_count == 5, "src node count incorrect");
 	cr_expect(dst->head->data == 672, "data dst head incorrect");
@@ -228,7 +228,7 @@ Test(sh_operations_push, full_empty)
 	cr_assert(append_to_stack(87, &dst) == 1, "Error when appending nodes");
 	first_dst = dst->head;
 	last_dst = dst->head->prev;
-	operation_push(&dst, &src);
+	operation_push(dst, src);
 	cr_expect(dst->node_count == 4, "dst node count incorrect");
 	cr_expect(src->node_count == 0, "src node count incorrect");
 	cr_expect(dst->head->data == 5, "data dst head incorrect");
@@ -255,7 +255,7 @@ Test(sh_operations_push, empty_empty)
 	t_stack	*src;
 
 	cr_assert(create_both_stacks(&dst, &src) == 1, "Error when creating the stacks");
-	operation_push(&dst, &src);
+	operation_push(dst, src);
 	cr_expect(dst->node_count == 0, "dst node count incorrect");
 	cr_expect(src->node_count == 0, "src node count incorrect");
 	cr_expect(src->head == 0, "pushing empty to empty, nothing should have happened");
@@ -286,7 +286,7 @@ Test(sh_operations_swap, full)
 	second = stack->head->next;
 	third = stack->head->next->next;
 	last = stack->head->prev;
-	operation_swap(&stack);
+	operation_swap(stack);
 	cr_expect(stack->node_count == 9, "node count should be the same after swap");
 	cr_expect(stack->head->data == 1322, "data of first node incorrect");
 	cr_expect(stack->head->next->data == 14, "data of second node incorrect");
@@ -332,7 +332,7 @@ Test(sh_operations_swap, three_nodes)
 	second = stack->head->next;
 	third = stack->head->next->next;
 	last = stack->head->prev;
-	operation_swap(&stack);
+	operation_swap(stack);
 	cr_expect(stack->node_count == 3, "node count should be the same after swap");
 	cr_expect(stack->head->data == -32, "data of first node incorrect");
 	cr_expect(stack->head->next->data == -4, "data of second node incorrect");
@@ -361,7 +361,7 @@ Test(sh_operations_swap, two_nodes)
 	cr_assert(append_to_stack(-4679, &stack) == 1, "Error when appending nodes");
 	first = stack->head;
 	second = stack->head->next;
-	operation_swap(&stack);
+	operation_swap(stack);
 	cr_expect(stack->node_count == 2, "node count should be the same after swap");
 	cr_expect(stack->head->data == -4679, "data of first node incorrect");
 	cr_expect(stack->head->next->data == 614, "data of second node incorrect");
@@ -385,7 +385,7 @@ Test(sh_operations_swap, one_node)
 	cr_assert(append_to_stack(1, &stack) == 1, "Error when appending nodes");
 	first = stack->head;
 	last = stack->head->prev;
-	operation_swap(&stack);
+	operation_swap(stack);
 	cr_expect(stack->node_count == 1, "node count should be the same after swap");
 	cr_expect(stack->head->data == 1, "data of first node incorrect");
 	cr_expect(stack->head->next->data == 1, "data of first again node incorrect");
@@ -398,7 +398,7 @@ Test(sh_operations_swap, empty)
 	t_stack	*stack;
 
 	cr_assert(create_stack(&stack) == 1, "Error when creating the stack");
-	operation_swap(&stack);
+	operation_swap(stack);
 	cr_expect(stack->node_count == 0, "node count should be the same after swap");
 	cr_expect(stack->head == 0, "swap with empty stack, nothing should have happened");
 }
@@ -424,7 +424,7 @@ Test(sh_operations_rotate, full)
 	second = stack->head->next;
 	third = stack->head->next->next;
 	last = stack->head->prev;
-	operation_rotate(&stack);
+	operation_rotate(stack);
 	cr_expect(stack->node_count == 8, "node count should be the same after rotate");
 	cr_expect(stack->head->data == 2, "data of first node incorrect");
 	cr_expect(stack->head->next->data == 3, "data of second node incorrect");
@@ -467,7 +467,7 @@ Test(sh_operations_rotate, three_nodes)
 	second = stack->head->next;
 	third = stack->head->next->next;
 	last = stack->head->prev;
-	operation_rotate(&stack);
+	operation_rotate(stack);
 	cr_expect(stack->node_count == 3, "node count should be the same after rotate");
 	cr_expect(stack->head->data == 6, "data of first node incorrect");
 	cr_expect(stack->head->next->data == 8, "data of second node incorrect");
@@ -497,7 +497,7 @@ Test(sh_operations_rotate, two_nodes)
 	first = stack->head;
 	second = stack->head->next;
 	last = stack->head->prev;
-	operation_rotate(&stack);
+	operation_rotate(stack);
 	cr_expect(stack->node_count == 2, "node count should be the same after rotate");
 	cr_expect(stack->head->data == 2, "data of first node incorrect");
 	cr_expect(stack->head->next->data == -311, "data of second node incorrect");
@@ -519,7 +519,7 @@ Test(sh_operations_rotate, one_node)
 	cr_assert(create_stack(&stack) == 1, "Error when creating the stack");
 	cr_assert(append_to_stack(311, &stack) == 1, "Error when appending nodes");
 	first = stack->head;
-	operation_rotate(&stack);
+	operation_rotate(stack);
 	cr_expect(stack->node_count == 1, "node count should be the same after rotate");
 	cr_expect(stack->head->data == 311, "data of first node incorrect");
 	cr_expect(stack->head->next->data == 311, "data of first again node incorrect");
@@ -533,7 +533,7 @@ Test(sh_operations_rotate, empty)
 	t_stack	*stack;
 
 	cr_assert(create_stack(&stack) == 1, "Error when creating the stack");
-	operation_rotate(&stack);
+	operation_rotate(stack);
 	cr_expect(stack->node_count == 0, "node count should be the same after rotate");
 	cr_expect(stack->head == 0, "rotate with empty stack, nothing should have happened");
 }
@@ -559,7 +559,7 @@ Test(sh_operations_rev_rotate, full)
 	second = stack->head->next;
 	last = stack->head->prev;
 	second_last = stack->head->prev->prev;
-	operation_rev_rotate(&stack);
+	operation_rev_rotate(stack);
 	cr_expect(stack->node_count == 8, "node count should be the same after rotate");
 	cr_expect(stack->head->data == 8, "data of first node incorrect");
 	cr_expect(stack->head->next->data == 311, "data of second node incorrect");
@@ -602,7 +602,7 @@ Test(sh_operations_rev_rotate, three_nodes)
 	second = stack->head->next;
 	last = stack->head->prev;
 	second_last = stack->head->prev->prev;
-	operation_rev_rotate(&stack);
+	operation_rev_rotate(stack);
 	cr_expect(stack->node_count == 3, "node count should be the same after rotate");
 	cr_expect(stack->head->data == -5, "data of first node incorrect");
 	cr_expect(stack->head->next->data == -3, "data of second node incorrect");
@@ -632,7 +632,7 @@ Test(sh_operations_rev_rotate, two_nodes)
 	first = stack->head;
 	last = stack->head->prev;
 	second_last = stack->head->prev->prev;
-	operation_rev_rotate(&stack);
+	operation_rev_rotate(stack);
 	cr_expect(stack->node_count == 2, "node count should be the same after rotate");
 	cr_expect(stack->head->data == -5, "data of first node incorrect");
 	cr_expect(stack->head->next->data == -3, "data of second node incorrect");
@@ -656,7 +656,7 @@ Test(sh_operations_rev_rotate, one_node)
 	cr_assert(append_to_stack(-3, &stack) == 1, "Error when appending nodes");
 	first = stack->head;
 	last = stack->head->prev;
-	operation_rev_rotate(&stack);
+	operation_rev_rotate(stack);
 	cr_expect(stack->node_count == 1, "node count should be the same after rotate");
 	cr_expect(stack->head->data == -3, "data of first node incorrect");
 	cr_expect(stack->head->next->data == -3, "data of first again node incorrect");
@@ -671,7 +671,7 @@ Test(sh_operations_rev_rotate, empty)
 	t_stack	*stack;
 
 	cr_assert(create_stack(&stack) == 1, "Error when creating the stack");
-	operation_rev_rotate(&stack);
+	operation_rev_rotate(stack);
 	cr_expect(stack->node_count == 0, "node count should be the same after rotate");
 	cr_expect(stack->head == 0, "rev rotate with empty stack, nothing should have happened");
 }

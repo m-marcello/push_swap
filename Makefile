@@ -6,7 +6,7 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/07 18:47:20 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/21 00:49:41 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/01/31 12:45:59 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,14 +32,14 @@ HDRS := $(HDRS_PATH)/share.h $(HDRS_PATH)/check.h $(HDRS_PATH)/pu_sw.h
 PLUS := \033[38;5;40m+\033[0;00m
 MINUS := \033[38;5;160m-\033[0;00m
 
-all: $(NAME1) # $(NAME2)
+all: $(NAME1) $(NAME2)
 
 $(NAME1): $(LIBFT) $(OBJS_CHECK) $(OBJS_SHARE) # REMOVE -g FLAG
 	@$(CC) -g -o $@ $^ $(LIBFT)
 	@echo " ${PLUS} $@"
 
-$(NAME2): $(LIBFT) $(OBJS_PU_SW) $(OBJS_SHARE)
-	@$(CC) -o $@ $^ $(LIBFT)
+$(NAME2): $(LIBFT) $(OBJS_PU_SW) $(OBJS_SHARE) # REMOVE -g FLAG
+	@$(CC) -g -o $@ $^ $(LIBFT)
 	@echo " ${PLUS} $@"
 
 objs/%.o: srcs/%.c $(HDRS) # REMOVE -g FLAG
@@ -58,8 +58,9 @@ lclean:
 fclean: clean lfclean
 	@rm -fv $(LIBFT) | sed -e $$'s/^/ $(MINUS) /'
 
-lfclean:
-	@rm -fv $(NAME) | sed -e $$'s/^/ $(MINUS) /'
+lfclean: lclean
+	@rm -fv $(NAME1) | sed -e $$'s/^/ $(MINUS) /'
+	@rm -fv $(NAME2) | sed -e $$'s/^/ $(MINUS) /'
 
 re: fclean all
 

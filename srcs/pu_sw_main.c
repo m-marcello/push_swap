@@ -6,12 +6,13 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/28 16:58:37 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/30 22:13:07 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 12:50:53 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pu_sw.h"
 #include "libft.h"
+#include <unistd.h>
 
 /*
 ** -------------------------------------------------------------------------- **
@@ -63,7 +64,7 @@ int		main(int argc, char **argv)
 	if (argc == 1 ||
 		(argc == 2 && (ft_strequ(argv[1], "-v") || ft_strequ(argv[1], "-c"))))
 		return (0);
-	arg_off = get_options(argv[1], &options);
+	arg_off = get_options(&argv[1], &options);
 	if (create_both_stacks(&stack_a, &stack_b) == 0)
 		return (0);
 	if (is_valid_input(argc - 1 - arg_off, &argv[1 + arg_off],
@@ -74,7 +75,7 @@ int		main(int argc, char **argv)
 		free_stack(&stack_b);
 		return (0);
 	}
-	sort_stack(options, &stack_a, &stack_b);
+	sort_stack(options, stack_a, stack_b);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 	return (0);
