@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   test_pu_sw_sorting_helpers.c                       :+:    :+:            */
+/*   test_share_is_sorted.c                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/27 15:36:24 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 17:53:49 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 18:07:20 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <criterion/criterion.h>
 #include <criterion/assert.h>
-#include "pu_sw.h"
+#include "share.h"
 
 int		create_stack(t_stack **stack);
 

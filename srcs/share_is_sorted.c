@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/31 17:57:42 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 17:57:52 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 18:08:09 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ int		is_sorted(t_stack *stack)
 		walk = walk->next;
 		++node_count;
 	}
-	return (break_count);
+	return (break_count + 1);
 }
 
