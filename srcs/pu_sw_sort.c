@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/30 22:08:08 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 15:57:34 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 21:12:51 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,14 @@ void	sort_stack(int options, t_stack *stack_a, t_stack *stack_b)
 		p_info->color = options - 1;
 		visualizer(p_info, "start", stack_a, stack_b);
 	}
-	operation_push(stack_b, stack_a);
-	visualizer(p_info, "pb", stack_a, stack_b);
-	operation_ss(stack_b, stack_a);
-	visualizer(p_info, "ss", stack_a, stack_b);
-	operation_push(stack_b, stack_a);
-	visualizer(p_info, "pb", stack_a, stack_b);
-	operation_rev_rotate(stack_b);
-	visualizer(p_info, "rrb", stack_a, stack_b);
+	is_sorted(stack_a);
+
+	// operation_push(stack_b, stack_a);
+	// visualizer(p_info, "pb", stack_a, stack_b);
+	// operation_ss(stack_b, stack_a);
+	// visualizer(p_info, "ss", stack_a, stack_b);
+	// operation_push(stack_b, stack_a);
+	// visualizer(p_info, "pb", stack_a, stack_b);
+	// operation_rev_rotate(stack_b);
+	// visualizer(p_info, "rrb", stack_a, stack_b);
 }

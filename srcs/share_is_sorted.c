@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/31 17:57:42 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 18:08:09 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 21:15:48 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,14 @@ int		is_sorted(t_stack *stack)
 	walk = stack->head;
 	while (node_count < stack->node_count)
 	{
-		if (walk->data >= walk->next->data)
+		if (walk->data > walk->next->data)
 			++break_count;
 		if (break_count > 1)
 			return (0);
 		walk = walk->next;
 		++node_count;
 	}
+	if (break_count == 1 && stack->head->data < stack->head->prev->data)
+		return (0);
 	return (break_count + 1);
 }
-
