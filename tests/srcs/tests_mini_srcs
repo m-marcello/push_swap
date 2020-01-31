@@ -6,9 +6,9 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/08 17:26:13 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/27 15:36:11 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/01/31 17:41:16 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 TESTS_MINI_SOURCES := test_share_input_validation test_share_create_append_free\
-test_share_operations test_share_sorting_helpers
+test_share_operations test_pu_sw_sorting_helpers
