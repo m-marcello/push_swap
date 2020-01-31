@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 19:41:47 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 13:03:36 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 18:04:36 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 ** appendix of push function - had to split due to norm
 **
 ** params
-**	t_stack **dst		pointer to struct representing dst
-**	t_clist **to_push	element to push to first postion of dst
+**	t_stack *dst		pointer to struct representing dst
+**	t_clist *to_push	element to push to first postion of dst
 */
 
 static void	operation_push_2nd(t_stack *dst, t_clist *to_push)
@@ -44,8 +44,8 @@ static void	operation_push_2nd(t_stack *dst, t_clist *to_push)
 ** pushes the first node of stack src to stack dst
 **
 ** params
-**	t_stack **dst	pointer to struct representing dst
-**	t_stack **src	pointer to struct representing src
+**	t_stack *dst	pointer to struct representing dst
+**	t_stack *src	pointer to struct representing src
 */
 
 void		operation_push(t_stack *dst, t_stack *src)
@@ -72,7 +72,7 @@ void		operation_push(t_stack *dst, t_stack *src)
 ** swaps the first two elements of the stack
 **
 ** params
-**	t_stack **stack		pointer to struct representing stack
+**	t_stack *stack		pointer to struct representing stack
 */
 
 void		operation_swap(t_stack *stack)
@@ -101,8 +101,8 @@ void		operation_swap(t_stack *stack)
 ** swaps the first two elements of both stacks
 **
 ** params
-**	t_stack **stack_1	pointer to struct representing one stack
-**	t_stack **stack_2	pointer to struct representing the other stack
+**	t_stack *stack_1	pointer to struct representing one stack
+**	t_stack *stack_2	pointer to struct representing the other stack
 */
 
 void		operation_ss(t_stack *stack_1, t_stack *stack_2)

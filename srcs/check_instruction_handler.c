@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/25 17:24:03 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 12:56:19 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 17:46:01 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 **
 ** params
 **	char *inst			the instruction to be applied to the stacks
-**	t_stack **stack_a	pointer to struct representing stack a
-**	t_stack **stack_b	pointer to struct representing stack b
+**	t_stack *stack_a	pointer to struct representing stack a
+**	t_stack *stack_b	pointer to struct representing stack b
 ** return
 **	1					when instruction exists
 **	0					when it doesn't
@@ -63,8 +63,8 @@ static int	apply_instruction(char *inst, t_stack *stack_a, t_stack *stack_b)
 ** and calls the respective operation
 **
 ** params
-**	t_stack **stack_a	pointer to struct representing stack a
-**	t_stack **stack_b	pointer to struct representing stack b
+**	t_stack *stack_a	pointer to struct representing stack a
+**	t_stack *stack_b	pointer to struct representing stack b
 ** return
 **	1					when all instructions exists
 **	0					when a line makes no sense

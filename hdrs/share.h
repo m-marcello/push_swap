@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 15:15:21 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 16:55:44 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 17:58:15 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ void			operation_rotate(t_stack *stack);
 void			operation_rr(t_stack *stack_1, t_stack *stack_2);
 void			operation_rev_rotate(t_stack *stack);
 void			operation_rrr(t_stack *stack_1, t_stack *stack_2);
+int				is_sorted(t_stack *stack);
 
 #endif

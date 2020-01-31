@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/28 16:58:37 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 17:12:36 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 17:45:27 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@
 ** 2 for color
 **
 ** params
-**	char **argv	address to first argument of main
+**	char **argv		address to first argument of main
+**	int *options	pointer to save the options
 ** return
-**	arg_off		number of option arguments
-**	0			in case of error
+**	arg_off			number of option arguments
+**	0				in case of error
 */
 
 static int	get_options(char **argv, int *options)

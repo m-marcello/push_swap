@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/24 19:20:21 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 17:23:12 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 17:48:13 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static void	set_color_info(t_print *p_info)
 **	color variable in p_info
 **
 ** params
+**	t_print *p_info	struct with all the relevant info regarding printing
 **	t_clist *walk_a	first item of stack a
 **	t_clist *walk_b	first item of stack b
 ** return
@@ -96,8 +97,8 @@ static void	print_stacks(t_print *p_info, t_clist *walk_a, t_clist *walk_b)
 ** params
 **	t_print *p_info	struct with all the relevant info regarding printing
 **	char *inst		the applied instruction
-**	t_stack **stack_a	pointer to struct for stack a
-**	t_stack **stack_b	pointer to struct for stack b
+**	t_stack *stack_a	pointer to struct representing stack a
+**	t_stack *stack_b	pointer to struct representing stack b
 ** return
 **	VOID
 */

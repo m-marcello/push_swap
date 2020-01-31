@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 19:09:31 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 13:04:23 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 18:05:21 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** rotates stack by 1 element, first node becomes last
 **
 ** params
-**	t_stack **stack		pointer to struct representing stack
+**	t_stack *stack		pointer to struct representing stack
 */
 
 void	operation_rotate(t_stack *stack)
@@ -35,7 +35,7 @@ void	operation_rotate(t_stack *stack)
 ** reverse rotates stack by 1 element, last node becomes first
 **
 ** params
-**	t_stack **stack		pointer to struct representing stack
+**	t_stack *stack		pointer to struct representing stack
 */
 
 void	operation_rev_rotate(t_stack *stack)
@@ -53,8 +53,8 @@ void	operation_rev_rotate(t_stack *stack)
 ** rotates two stacks by 1 element, first node becomes last
 **
 ** params
-**	t_stack **stack_1	pointer to struct representing one stack
-**	t_stack **stack_2	pointer to struct representing the other stack
+**	t_stack *stack_1	pointer to struct representing one stack
+**	t_stack *stack_2	pointer to struct representing the other stack
 */
 
 void	operation_rr(t_stack *stack_1, t_stack *stack_2)
@@ -68,8 +68,8 @@ void	operation_rr(t_stack *stack_1, t_stack *stack_2)
 ** reverse rotates two stacks by 1 element, last node becomes first
 **
 ** params
-**	t_stack **stack_1	pointer to struct representing one stack
-**	t_stack **stack_2	pointer to struct representing the other stack
+**	t_stack *stack_1	pointer to struct representing one stack
+**	t_stack *stack_2	pointer to struct representing the other stack
 */
 
 void	operation_rrr(t_stack *stack_1, t_stack *stack_2)

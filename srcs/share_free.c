@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/20 22:18:26 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/22 21:32:52 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 18:04:38 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	free_node(t_clist **node)
 
 /*
 ** -------------------------------------------------------------------------- **
-** walks through the stack to save each node
+** walks through the stack to free each node
 **
 ** params
 **	t_stack **stack	pointer to struct representing stack

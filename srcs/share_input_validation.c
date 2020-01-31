@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 16:05:14 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 13:09:11 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 17:51:34 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,17 @@ int			check_for_duplicates(t_stack **stack)
 **	0				in case of error
 */
 
-static int	array_atoi(char ***str_arr, t_stack **stack)
+static int	array_atoi(char **str_arr, t_stack **stack)
 {
 	int				i;
 	long long int	data;
 
 	i = 0;
-	if ((*str_arr) == 0)
+	if (str_arr == 0)
 		return (-1);
-	while ((*str_arr)[i])
+	while (str_arr[i])
 	{
-		data = ft_atoi((*str_arr)[i]);
+		data = ft_atoi(str_arr[i]);
 		if (data < INT_MIN || INT_MAX < data)
 			return (0);
 		if (!append_to_stack(data, stack))
@@ -105,7 +105,7 @@ static int	split_input_strings(int argc, char **argv, t_stack **stack)
 		str_arr = ft_strsplit(argv[i], ' ');
 		if (str_arr == 0)
 			return (0);
-		if (array_atoi(&str_arr, stack) == 0)
+		if (array_atoi(str_arr, stack) == 0)
 		{
 			free_str_arr(&str_arr);
 			return (0);
