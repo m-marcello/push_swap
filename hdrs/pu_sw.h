@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 15:25:08 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 12:50:31 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 15:35:08 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "share.h"
 
 # define COLOR "\033[38;5;40m"
-# define RESET " \033[0;00m"
+# define RESET "\033[0;00m"
 
 typedef struct	s_print
 {
