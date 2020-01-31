@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/28 16:58:37 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 12:50:53 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 17:12:36 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,17 @@
 
 /*
 ** -------------------------------------------------------------------------- **
-** 
+** checks the input arguments for verbose or color option and saves it in the
+** options variable:
+** 0 for no options
+** 1 for verbose
+** 2 for color
 **
 ** params
-**	char ***argv	address to first argument of main
+**	char **argv	address to first argument of main
 ** return
-**	arg_off			number of option arguments
-**	-1				in case of error
+**	arg_off		number of option arguments
+**	0			in case of error
 */
 
 static int	get_options(char **argv, int *options)
@@ -62,7 +66,8 @@ int		main(int argc, char **argv)
 	t_stack *stack_b;
 
 	if (argc == 1 ||
-		(argc == 2 && (ft_strequ(argv[1], "-v") || ft_strequ(argv[1], "-c"))))
+		(argc == 2 && (ft_strequ(argv[1], "-v") || ft_strequ(argv[1], "-c") ||
+		ft_strequ(argv[1], "-vc") || ft_strequ(argv[1], "-cv"))))
 		return (0);
 	arg_off = get_options(&argv[1], &options);
 	if (create_both_stacks(&stack_a, &stack_b) == 0)

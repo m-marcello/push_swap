@@ -1,17 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   share_visualizer.c                                 :+:    :+:            */
+/*   pu_sw_visualizer.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/24 19:20:21 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 12:37:48 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/01/31 17:23:12 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pu_sw.h"
 #include "libft.h"
+
+/*
+** -------------------------------------------------------------------------- **
+** saves necessary information for visualization with color
+**
+** params
+**	t_print *p_info	struct with all the relevant info regarding printing
+** return
+**	VOID
+*/
 
 static void	set_color_info(t_print *p_info)
 {
@@ -34,6 +44,19 @@ static void	set_color_info(t_print *p_info)
 		|| ft_strequ(p_info->inst, "rb") || ft_strequ(p_info->inst, "rr"));
 }
 
+/*
+** -------------------------------------------------------------------------- **
+** prints the current state of both stacks
+**	- with or without highlighting the last moved items, depending on the
+**	color variable in p_info
+**
+** params
+**	t_clist *walk_a	first item of stack a
+**	t_clist *walk_b	first item of stack b
+** return
+**	VOID
+*/
+
 static void	print_stacks(t_print *p_info, t_clist *walk_a, t_clist *walk_b)
 {
 	int		count;
@@ -49,18 +72,35 @@ static void	print_stacks(t_print *p_info, t_clist *walk_a, t_clist *walk_b)
 		col_b = (p_info->color && p_info->col_b && ((p_info->col_last &&
 			count == p_info->count_b) || (p_info->col_second && count == 2) ||
 			(p_info->col_first && count == 1))) ? COLOR : RESET;
-		if (count < p_info->count_a && count < p_info->count_b)
-			ft_printf("|%s%25d%s  |%s%25d%s  |\n", col_a, RESET, col_b,
-				RESET, walk_a->data, walk_b->data);
-		else if (count < p_info->count_a && count >= p_info->count_b)
-			ft_printf("|%s%25d%s  |%25c  |\n", col_a, RESET, walk_a->data,
-				'-');
-		else if (count >= p_info->count_a && count < p_info->count_b)
-			ft_printf("|%25c  |%s%25d%s  |\n", '-', walk_b->data, col_b,
+		if (count <= p_info->count_a && count <= p_info->count_b)
+			ft_printf("|%s%25d%s  |%s%25d%s  |\n", col_a, walk_a->data, RESET,
+			col_b, walk_b->data, RESET);
+		else if (count <= p_info->count_a && count > p_info->count_b)
+			ft_printf("|%s%25d%s  |%25c  |\n", col_a, walk_a->data, RESET, '-');
+		else if (count > p_info->count_a && count <= p_info->count_b)
+			ft_printf("|%25c  |%s%25d%s  |\n", '-', col_b, walk_b->data,
 				RESET);
 		++count;
+		walk_a = (walk_a != 0) ? walk_a->next : 0;
+		walk_b = (walk_b != 0) ? walk_b->next : 0;
 	}
 }
+
+/*
+** -------------------------------------------------------------------------- **
+** entry point for an optional visualization of the current state of the
+** two stacks
+**	- with or without highlighting the last moved items, depending on the
+**	color variable in p_info
+**
+** params
+**	t_print *p_info	struct with all the relevant info regarding printing
+**	char *inst		the applied instruction
+**	t_stack **stack_a	pointer to struct for stack a
+**	t_stack **stack_b	pointer to struct for stack b
+** return
+**	VOID
+*/
 
 void		visualizer(t_print *p_info, char *inst,
 			t_stack *stack_a, t_stack *stack_b)
@@ -77,4 +117,7 @@ void		visualizer(t_print *p_info, char *inst,
 	ft_printf("  =========================   ========================  \n");
 	if ((stack_a->node_count || stack_b->node_count))
 		print_stacks(p_info, stack_a->head, stack_b->head);
+	else
+		ft_printf("|%25c  |%25c  |\n", '-', '-');
+	ft_printf("  =========================   ========================  \n");
 }
