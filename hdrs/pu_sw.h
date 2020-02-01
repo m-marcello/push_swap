@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 15:25:08 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/01 15:17:53 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/01 15:19:10 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 typedef struct	s_print
 {
 	int		color;
-	char	*inst;
 	int		count_a;
 	int		count_b;
 	int		col_a;

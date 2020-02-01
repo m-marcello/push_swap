@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/24 19:20:21 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/01 15:09:33 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/01 15:25:08 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,25 @@
 **	VOID
 */
 
-static void	set_color_info(t_print *p_info)
+static void	set_color_info(t_print *p_info, char *inst)
 {
-	p_info->col_a = (ft_strequ(p_info->inst, "pa")
-		|| ft_strequ(p_info->inst, "sa") || ft_strequ(p_info->inst, "ss")
-		|| ft_strequ(p_info->inst, "ra") || ft_strequ(p_info->inst, "rr")
-		|| ft_strequ(p_info->inst, "rra") || ft_strequ(p_info->inst, "rrr"));
-	p_info->col_b = (ft_strequ(p_info->inst, "pb")
-		|| ft_strequ(p_info->inst, "sb") || ft_strequ(p_info->inst, "ss")
-		|| ft_strequ(p_info->inst, "rb") || ft_strequ(p_info->inst, "rr")
-		|| ft_strequ(p_info->inst, "rrb") || ft_strequ(p_info->inst, "rrr"));
-	p_info->col_first = (ft_strequ(p_info->inst, "pa")
-		|| ft_strequ(p_info->inst, "pb") || ft_strequ(p_info->inst, "sa")
-		|| ft_strequ(p_info->inst, "sb") || ft_strequ(p_info->inst, "ss")
-		|| ft_strequ(p_info->inst, "rra") || ft_strequ(p_info->inst, "rrb")
-		|| ft_strequ(p_info->inst, "rrr"));
-	p_info->col_second = (ft_strequ(p_info->inst, "sa")
-		|| ft_strequ(p_info->inst, "sb") || ft_strequ(p_info->inst, "ss"));
-	p_info->col_last = (ft_strequ(p_info->inst, "ra")
-		|| ft_strequ(p_info->inst, "rb") || ft_strequ(p_info->inst, "rr"));
+	p_info->col_a = (ft_strequ(inst, "pa") ||
+		ft_strequ(inst, "sa") || ft_strequ(inst, "ss") ||
+		ft_strequ(inst, "ra") || ft_strequ(inst, "rr") ||
+		ft_strequ(inst, "rra") || ft_strequ(inst, "rrr"));
+	p_info->col_b = (ft_strequ(inst, "pb") ||
+		ft_strequ(inst, "sb") || ft_strequ(inst, "ss") ||
+		ft_strequ(inst, "rb") || ft_strequ(inst, "rr") ||
+		ft_strequ(inst, "rrb") || ft_strequ(inst, "rrr"));
+	p_info->col_first = (ft_strequ(inst, "pa") || ft_strequ(inst, "pb") ||
+		(ft_strequ(inst, "sa") && p_info->count_a > 1) ||
+		(ft_strequ(inst, "sb") && p_info->count_b > 1) ||
+		ft_strequ(inst, "ss") || ft_strequ(inst, "rra") ||
+		ft_strequ(inst, "rrb") || ft_strequ(inst, "rrr"));
+	p_info->col_second = (ft_strequ(inst, "sa") ||
+		ft_strequ(inst, "sb") || ft_strequ(inst, "ss"));
+	p_info->col_last = (ft_strequ(inst, "ra") ||
+		ft_strequ(inst, "rb") || ft_strequ(inst, "rr"));
 }
 
 /*
@@ -109,11 +109,10 @@ void		visualizer(t_print *p_info, char *inst,
 	ft_putendl(inst);
 	if (p_info == 0)
 		return ;
-	p_info->inst = inst;
 	p_info->count_a = stack_a->node_count;
 	p_info->count_b = stack_b->node_count;
 	if (p_info->color)
-		set_color_info(p_info);
+		set_color_info(p_info, inst);
 	ft_printf("|%25c  |%25c  |\n", 'A', 'B');
 	ft_printf("  =========================   ========================  \n");
 	if ((stack_a->node_count || stack_b->node_count))
