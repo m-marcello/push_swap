@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/30 22:08:08 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 21:12:51 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/01 14:45:35 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-void	sort_stack(int options, t_stack *stack_a, t_stack *stack_b)
+void	start_sort(int options, t_stack *stack_a, t_stack *stack_b)
 {
 	t_print *p_info;
 

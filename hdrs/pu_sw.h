@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 15:25:08 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 17:58:14 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/01 14:27:54 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ typedef struct	s_print
 
 void			visualizer(t_print *p_info, char *inst, t_stack *stack_a,
 				t_stack *stack_b);
-void			sort_stack(int options, t_stack *stack_a, t_stack *stack_b);
+void			start_sort(int options, t_stack *stack_a, t_stack *stack_b);
 
 #endif
