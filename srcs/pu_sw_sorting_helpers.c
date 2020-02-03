@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/27 15:22:33 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/03 12:29:01 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/03 15:36:05 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ void	pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 		else if (stack_a->head->next->data < stack_a->head->prev->data &&
 			stack_a->head->prev->data < stack_a->head->data)
 			sa(p_info, stack_a, stack_b);
-		else
-			pb(p_info, stack_a, stack_b);
+		pb(p_info, stack_a, stack_b);
 	}
 	if (is_sorted(stack_a) == 0 && stack_a->node_count == 3)
 		sa(p_info, stack_a, stack_b);
