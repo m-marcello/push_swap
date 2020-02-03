@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/01 16:38:14 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/03 17:26:55 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/03 18:58:40 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	redirect_all_stdout(void)
 	cr_redirect_stderr();
 }
 
-Test(ps_does_it_fit, it_does_fit_pos)
+Test(ps_fits_between, it_does_fit_pos)
 {
 	t_stack	*stack;
 	t_clist	*smallest;
@@ -38,10 +38,10 @@ Test(ps_does_it_fit, it_does_fit_pos)
 	node = stack->head;
 	smallest = stack->head->next;
 	highest = stack->head->prev;
-	cr_assert_eq(does_it_fit(node, smallest, highest), 1, "node should fit");
+	cr_assert_eq(fits_between(node, smallest, highest), 1, "node should fit");
 }
 
-Test(ps_does_it_fit, it_does_fit_neg)
+Test(ps_fits_between, it_does_fit_neg)
 {
 	t_stack	*stack;
 	t_clist	*smallest;
@@ -55,10 +55,10 @@ Test(ps_does_it_fit, it_does_fit_neg)
 	node = stack->head;
 	smallest = stack->head->next;
 	highest = stack->head->prev;
-	cr_assert_eq(does_it_fit(node, smallest, highest), 1, "node should fit");
+	cr_assert_eq(fits_between(node, smallest, highest), 1, "node should fit");
 }
 
-Test(ps_does_it_fit, it_does_fit_mix)
+Test(ps_fits_between, it_does_fit_mix)
 {
 	t_stack	*stack;
 	t_clist	*smallest;
@@ -72,10 +72,10 @@ Test(ps_does_it_fit, it_does_fit_mix)
 	node = stack->head;
 	smallest = stack->head->next;
 	highest = stack->head->prev;
-	cr_assert_eq(does_it_fit(node, smallest, highest), 1, "node should fit");
+	cr_assert_eq(fits_between(node, smallest, highest), 1, "node should fit");
 }
 
-Test(ps_does_it_fit, it_does_not_fit_pos)
+Test(ps_fits_between, it_does_not_fit_pos)
 {
 	t_stack	*stack;
 	t_clist	*smallest;
@@ -89,10 +89,10 @@ Test(ps_does_it_fit, it_does_not_fit_pos)
 	node = stack->head;
 	smallest = stack->head->next;
 	highest = stack->head->prev;
-	cr_assert_eq(does_it_fit(smallest, node, highest), 0, "node should not fit");
+	cr_assert_eq(fits_between(smallest, node, highest), 0, "node should not fit");
 }
 
-Test(ps_does_it_fit, it_does_not_fit_neg)
+Test(ps_fits_between, it_does_not_fit_neg)
 {
 	t_stack	*stack;
 	t_clist	*smallest;
@@ -106,10 +106,10 @@ Test(ps_does_it_fit, it_does_not_fit_neg)
 	node = stack->head;
 	smallest = stack->head->next;
 	highest = stack->head->prev;
-	cr_assert_eq(does_it_fit(highest, node, smallest), 0, "node should not fit");
+	cr_assert_eq(fits_between(highest, node, smallest), 0, "node should not fit");
 }
 
-Test(ps_does_it_fit, it_does_not_fit_mix)
+Test(ps_fits_between, it_does_not_fit_mix)
 {
 	t_stack	*stack;
 	t_clist	*smallest;
@@ -123,7 +123,7 @@ Test(ps_does_it_fit, it_does_not_fit_mix)
 	node = stack->head;
 	smallest = stack->head->next;
 	highest = stack->head->prev;
-	cr_assert_eq(does_it_fit(node, highest, smallest), 0, "node should not fit");
+	cr_assert_eq(fits_between(node, highest, smallest), 0, "node should not fit");
 }
 
 Test(ps_post_sort, full_sorted, .init=redirect_all_stdout)

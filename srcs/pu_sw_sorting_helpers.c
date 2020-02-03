@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/27 15:22:33 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/03 15:36:05 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/03 19:39:37 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@
 **	0				if it doesn't
 */
 
-int		does_it_fit(t_clist *node, t_clist *prev, t_clist *next)
+int		fits_between(t_clist *node, t_clist *prev, t_clist *next)
 {
-	return (prev->data < node->data && node->data < next->data);
+	return ((prev->data < node->data && node->data < next->data)
+		|| (node->data < prev->data && node->data < next->data)
+		|| (node->data > prev->data && node->data > next->data));
 }
 
 /*
@@ -44,8 +46,7 @@ int		does_it_fit(t_clist *node, t_clist *prev, t_clist *next)
 **	t_stack *stack_a	pointer to struct representing stack a
 **	t_stack *stack_b	pointer to struct representing stack b
 ** return
-**	0					if stack a is sorted and stack b empty
-**	1					if elements have been pushed to stack b
+**	VOID
 */
 
 void	pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
@@ -77,8 +78,7 @@ void	pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 **	t_stack *stack_a	pointer to struct representing stack a - sorted stage 2
 **	t_stack *stack_b	pointer to struct representing stack b
 ** return
-**	0					if stack a is sorted and stack b empty
-**	1					if elements have been pushed to stack b
+**	VOID
 */
 
 void	post_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
