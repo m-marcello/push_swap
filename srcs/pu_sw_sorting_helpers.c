@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/27 15:22:33 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/01 20:42:24 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/03 12:29:01 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int		does_it_fit(t_clist *node, t_clist *prev, t_clist *next)
 ** pushes elements from stack a to stack b until either there are only 3
 ** elements remaining in stack a or stack a is sorted (smallest element does
 ** not necessarily need to be the first)
-** after applying this function stack a will be sorted
+** after applying this function stack a will be sorted - stage 2
+** stack b might still contain elements
 **
 ** params
 **	t_print *p_info		struct with all the relevant info regarding printing
@@ -47,7 +48,7 @@ int		does_it_fit(t_clist *node, t_clist *prev, t_clist *next)
 **	1					if elements have been pushed to stack b
 */
 
-int		pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
+void	pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 {
 	while (is_sorted(stack_a) == 0 && stack_a->node_count > 3)
 	{
@@ -63,11 +64,8 @@ int		pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 		else
 			pb(p_info, stack_a, stack_b);
 	}
-	if (is_sorted(stack_a) == 2 && stack_a->node_count == 3)
+	if (is_sorted(stack_a) == 0 && stack_a->node_count == 3)
 		sa(p_info, stack_a, stack_b);
-	if (stack_b->node_count == 0)
-		return (0);
-	return (1);
 }
 
 /*
@@ -77,7 +75,7 @@ int		pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 **
 ** params
 **	t_print *p_info		struct with all the relevant info regarding printing
-**	t_stack *stack_a	pointer to struct representing stack a
+**	t_stack *stack_a	pointer to struct representing stack a - sorted stage 2
 **	t_stack *stack_b	pointer to struct representing stack b
 ** return
 **	0					if stack a is sorted and stack b empty

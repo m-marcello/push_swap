@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/30 22:08:08 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/01 19:57:24 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/03 12:27:40 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	start_sort(int options, t_stack *stack_a, t_stack *stack_b)
 		p_info->color = options - 1;
 		visualizer(p_info, "start", stack_a, stack_b);
 	}
-	// if (pre_sort(p_info, stack_a, stack_b) == 1)
-	// 	sort_stack(p_info, stack_a, stack_b);
+	pre_sort(p_info, stack_a, stack_b);
+	sort_stack(p_info, stack_a, stack_b);
 	post_sort(p_info, stack_a, stack_b);
 	ft_bzero(p_info, sizeof(p_info));
 	free(p_info);
