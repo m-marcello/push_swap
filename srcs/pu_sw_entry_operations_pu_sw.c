@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/01 14:45:45 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/01 14:57:45 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/03 16:50:07 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	pb(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 /*
 ** -------------------------------------------------------------------------- **
 ** function to swap first two elemants of stack a
+** to make the overall algorithm more efficient, it also swaps stack b if its
+** first element is smaller than its second
 **
 ** params
 **	t_print	*p_info		pointer to printing information
@@ -56,8 +58,16 @@ void	pb(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 
 void	sa(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 {
-	operation_swap(stack_a);
-	visualizer(p_info, "sa", stack_a, stack_b);
+	if (stack_b->head && stack_b->head->data < stack_b->head->next->data)
+	{
+		operation_ss(stack_a, stack_b);
+		visualizer(p_info, "ss", stack_a, stack_b);
+	}
+	else
+	{
+		operation_swap(stack_a);
+		visualizer(p_info, "sa", stack_a, stack_b);
+	}
 }
 
 /*
