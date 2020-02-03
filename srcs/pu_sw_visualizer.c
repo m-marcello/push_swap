@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/24 19:20:21 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/01 15:25:08 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/03 17:04:51 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	print_stacks(t_print *p_info, t_clist *walk_a, t_clist *walk_b)
 	char	*col_b;
 
 	count = 1;
-	while (count < p_info->count_a || count < p_info->count_b)
+	while (count <= p_info->count_a || count <= p_info->count_b)
 	{
 		col_a = (p_info->color && p_info->col_a && ((p_info->col_last &&
 			count == p_info->count_a) || (p_info->col_second && count == 2) ||
@@ -113,11 +113,12 @@ void		visualizer(t_print *p_info, char *inst,
 	p_info->count_b = stack_b->node_count;
 	if (p_info->color)
 		set_color_info(p_info, inst);
+	ft_printf("  =========================   =========================  \n");
 	ft_printf("|%25c  |%25c  |\n", 'A', 'B');
-	ft_printf("  =========================   ========================  \n");
+	ft_printf("| =========================   ========================= |\n");
 	if ((stack_a->node_count || stack_b->node_count))
 		print_stacks(p_info, stack_a->head, stack_b->head);
 	else
 		ft_printf("|%25c  |%25c  |\n", '-', '-');
-	ft_printf("  =========================   ========================  \n\n");
+	ft_printf("  =========================   =========================  \n\n");
 }
