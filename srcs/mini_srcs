@@ -6,12 +6,12 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/08 17:27:45 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/02/01 16:58:30 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/02/05 17:16:59 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 MINI_SOURCES_SHARE := share_input_validation share_create_append share_free\
-share_operations_push_swap share_operations_rotate share_is_sorted
+share_operations_push_swap share_operations_rotate share_sorting_helpers
 
 MINI_SOURCES_CHECK := check_instruction_handler
 

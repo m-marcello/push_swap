@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/05 13:10:23 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/05 13:10:31 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/05 17:21:08 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -321,8 +321,8 @@ Test(ps_post_sort, one_sorted, .init=redirect_all_stdout)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-Test(ps_pre_sort, full_sorted_stage_1_pos/* , .init=redirect_all_stdout */)
+/* 
+Test(ps_pre_sort, full_sorted_stage_1_pos, .init=redirect_all_stdout)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -348,7 +348,7 @@ Test(ps_pre_sort, full_sorted_stage_1_pos/* , .init=redirect_all_stdout */)
 	cr_assert_eq(is_sorted(stack_a), 1, "stack a should have remained sorted with the smallest item on top");
 }
 
-Test(ps_pre_sort, full_sorted_stage_1_neg/* , .init=redirect_all_stdout */)
+Test(ps_pre_sort, full_sorted_stage_1_neg, .init=redirect_all_stdout)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -374,7 +374,7 @@ Test(ps_pre_sort, full_sorted_stage_1_neg/* , .init=redirect_all_stdout */)
 	cr_assert_eq(is_sorted(stack_a), 1, "stack a should have remained sorted with the smallest item on top");
 }
 
-Test(ps_pre_sort, full_sorted_stage_1_mix/* , .init=redirect_all_stdout */)
+Test(ps_pre_sort, full_sorted_stage_1_mix, .init=redirect_all_stdout)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -415,7 +415,7 @@ Test(ps_pre_sort, full_sorted_stage_1_mix/* , .init=redirect_all_stdout */)
 	cr_assert_eq(is_sorted(stack_a), 1, "stack a should have remained sorted with the smallest item on top");
 }
 
-Test(ps_pre_sort, three_sorted_stage_1_pos/* , .init=redirect_all_stdout */)
+Test(ps_pre_sort, three_sorted_stage_1_pos, .init=redirect_all_stdout)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -429,7 +429,7 @@ Test(ps_pre_sort, three_sorted_stage_1_pos/* , .init=redirect_all_stdout */)
 	cr_assert_eq(is_sorted(stack_a), 1, "stack a should have remained sorted with the smallest item on top");
 }
 
-Test(ps_pre_sort, three_sorted_stage_1_neg/* , .init=redirect_all_stdout */)
+Test(ps_pre_sort, three_sorted_stage_1_neg, .init=redirect_all_stdout)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -443,7 +443,7 @@ Test(ps_pre_sort, three_sorted_stage_1_neg/* , .init=redirect_all_stdout */)
 	cr_assert_eq(is_sorted(stack_a), 1, "stack a should have remained sorted with the smallest item on top");
 }
 
-Test(ps_pre_sort, three_sorted_stage_1_mix/* , .init=redirect_all_stdout */)
+Test(ps_pre_sort, three_sorted_stage_1_mix, .init=redirect_all_stdout)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -457,7 +457,7 @@ Test(ps_pre_sort, three_sorted_stage_1_mix/* , .init=redirect_all_stdout */)
 	cr_assert_eq(is_sorted(stack_a), 1, "stack a should have remained sorted with the smallest item on top");
 }
 
-Test(ps_pre_sort, two_sorted_stage_1_pos/* , .init=redirect_all_stdout */)
+Test(ps_pre_sort, two_sorted_stage_1_pos, .init=redirect_all_stdout)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -470,7 +470,7 @@ Test(ps_pre_sort, two_sorted_stage_1_pos/* , .init=redirect_all_stdout */)
 	cr_assert_eq(is_sorted(stack_a), 1, "stack a should have remained sorted with the smallest item on top");
 }
 
-Test(ps_pre_sort, two_sorted_stage_1_neg/* , .init=redirect_all_stdout */)
+Test(ps_pre_sort, two_sorted_stage_1_neg, .init=redirect_all_stdout)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -483,7 +483,7 @@ Test(ps_pre_sort, two_sorted_stage_1_neg/* , .init=redirect_all_stdout */)
 	cr_assert_eq(is_sorted(stack_a), 1, "stack a should have remained sorted with the smallest item on top");
 }
 
-Test(ps_pre_sort, two_sorted_stage_1_mix/* , .init=redirect_all_stdout */)
+Test(ps_pre_sort, two_sorted_stage_1_mix, .init=redirect_all_stdout)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -498,7 +498,7 @@ Test(ps_pre_sort, two_sorted_stage_1_mix/* , .init=redirect_all_stdout */)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Test(ps_pre_sort, full_sorted_stage_2_pos/* , .init=redirect_all_stdout */)
+Test(ps_pre_sort, full_sorted_stage_2_pos, .init=redirect_all_stdout)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -524,7 +524,7 @@ Test(ps_pre_sort, full_sorted_stage_2_pos/* , .init=redirect_all_stdout */)
 	cr_assert_eq(is_sorted(stack_a), 2, "stack a should have remained sorted in stage 2");
 }
 
-Test(ps_pre_sort, full_sorted_stage_2_neg/* , .init=redirect_all_stdout */)
+Test(ps_pre_sort, full_sorted_stage_2_neg, .init=redirect_all_stdout)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -550,7 +550,7 @@ Test(ps_pre_sort, full_sorted_stage_2_neg/* , .init=redirect_all_stdout */)
 	cr_assert_eq(is_sorted(stack_a), 2, "stack a should have remained sorted in stage 2");
 }
 
-Test(ps_pre_sort, full_sorted_stage_2_mix/* , .init=redirect_all_stdout */)
+Test(ps_pre_sort, full_sorted_stage_2_mix, .init=redirect_all_stdout)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -592,7 +592,7 @@ Test(ps_pre_sort, full_sorted_stage_2_mix/* , .init=redirect_all_stdout */)
 	cr_assert_eq(is_sorted(stack_a), 2, "stack a should have remained sorted in stage 2");
 }
 
-Test(ps_pre_sort, three_sorted_stage_2_pos/* , .init=redirect_all_stdout */)
+Test(ps_pre_sort, three_sorted_stage_2_pos, .init=redirect_all_stdout)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -606,7 +606,7 @@ Test(ps_pre_sort, three_sorted_stage_2_pos/* , .init=redirect_all_stdout */)
 	cr_assert_eq(is_sorted(stack_a), 2, "stack a should have remained sorted in stage 2");
 }
 
-Test(ps_pre_sort, three_sorted_stage_2_neg/* , .init=redirect_all_stdout */)
+Test(ps_pre_sort, three_sorted_stage_2_neg, .init=redirect_all_stdout)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -620,7 +620,7 @@ Test(ps_pre_sort, three_sorted_stage_2_neg/* , .init=redirect_all_stdout */)
 	cr_assert_eq(is_sorted(stack_a), 2, "stack a should have remained sorted in stage 2");
 }
 
-Test(ps_pre_sort, three_sorted_stage_2_mix/* , .init=redirect_all_stdout */)
+Test(ps_pre_sort, three_sorted_stage_2_mix, .init=redirect_all_stdout)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -634,7 +634,7 @@ Test(ps_pre_sort, three_sorted_stage_2_mix/* , .init=redirect_all_stdout */)
 	cr_assert_eq(is_sorted(stack_a), 2, "stack a should have remained sorted in stage 2");
 }
 
-Test(ps_pre_sort, two_sorted_stage_2_pos/* , .init=redirect_all_stdout */)
+Test(ps_pre_sort, two_sorted_stage_2_pos, .init=redirect_all_stdout)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -647,7 +647,7 @@ Test(ps_pre_sort, two_sorted_stage_2_pos/* , .init=redirect_all_stdout */)
 	cr_assert_eq(is_sorted(stack_a), 2, "stack a should have remained sorted in stage 2");
 }
 
-Test(ps_pre_sort, two_sorted_stage_2_neg/* , .init=redirect_all_stdout */)
+Test(ps_pre_sort, two_sorted_stage_2_neg, .init=redirect_all_stdout)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -660,7 +660,7 @@ Test(ps_pre_sort, two_sorted_stage_2_neg/* , .init=redirect_all_stdout */)
 	cr_assert_eq(is_sorted(stack_a), 2, "stack a should have remained sorted in stage 2");
 }
 
-Test(ps_pre_sort, two_sorted_stage_2_mix/* , .init=redirect_all_stdout */)
+Test(ps_pre_sort, two_sorted_stage_2_mix, .init=redirect_all_stdout)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -826,3 +826,4 @@ Test(ps_pre_sort, three_unsorted_neg, .init=redirect_all_stdout)
 	cr_assert_stdout_eq_str("sa\n", "");
 	cr_assert_eq(is_sorted(stack_a), 2, "stack a should be sorted in stage 2");
 }
+ */

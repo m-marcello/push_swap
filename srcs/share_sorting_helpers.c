@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   share_is_sorted.c                                  :+:    :+:            */
+/*   share_sorting_helpers.c                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/31 17:57:42 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 21:15:48 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/05 18:18:47 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 /*
 ** -------------------------------------------------------------------------- **
 ** checks if the stack is sorted in ascending order
+** note:
+**	the smallest item does not necessarily need to be the first in order for
+**	this algorithm to return true
+**	I'll refer to a stack being sorted in stage 1 if the smallest item is also
+**	the first item
+**	and sorted in stage 2 if the smallest item is not the first
+**	but by rotating the stack it would get there
 **
 ** params
 **	t_stack *stack	pointer to struct representing stack
