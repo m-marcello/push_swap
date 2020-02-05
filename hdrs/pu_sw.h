@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 15:25:08 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/03 18:50:09 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/05 13:15:01 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void			start_sort(int options, t_stack *stack_a, t_stack *stack_b);
 void			visualizer(t_print *p_info, char *inst, t_stack *stack_a,
 				t_stack *stack_b);
 int				fits_between(t_clist *node, t_clist *prev, t_clist *next);
+int				optimal_rotation(t_clist *node, t_stack *stack_a);
 void			pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b);
 void			post_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b);
 void			pa(t_print *p_info, t_stack *stack_a, t_stack *stack_b);
