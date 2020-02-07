@@ -6,11 +6,28 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/27 15:22:33 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/05 13:17:55 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/07 17:26:30 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pu_sw.h"
+
+unsigned long	get_index(int data, t_stack *stack)
+{
+	t_clist	*walk;
+
+	walk = stack->trunk;
+	while (walk != 0 && data != walk->data)
+	{
+		if (data < walk->data)
+			walk = walk->left;
+		else if (data > walk->data)
+			walk = walk->right;
+	}
+	if (walk == 0)
+		return (0);
+	return (walk->index);
+}
 
 /*
 ** -------------------------------------------------------------------------- **

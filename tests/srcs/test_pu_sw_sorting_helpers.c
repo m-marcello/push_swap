@@ -6,17 +6,71 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/01 16:38:14 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/05 13:24:43 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/07 19:37:07 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <criterion/criterion.h>
 #include <criterion/assert.h>
-#include <criterion/redirect.h>
 #include "pu_sw.h"
 #include "libft.h"
 
 int		create_stack(t_stack **stack);
+
+Test(ps_get_index, full_pos)
+{
+	t_stack			*stack;
+	unsigned long	index;
+
+	cr_assert_eq(create_stack(&stack), 1, "stack should have been created");
+	cr_assert_eq(append_to_stack(1, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(0, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(2, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(3, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(5, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(20, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(10, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(6, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(80, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(23, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(11, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(257, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(8, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(9, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(55, &stack), 1, "new node should have been created");
+	tree_sort(stack);
+	index = get_index(0, stack);
+	cr_expect_eq(index, 1, "index of 1st item incorrect, index is instead %lu", index);
+	index = get_index(1, stack);
+	cr_expect_eq(index, 2, "index of 2nd item incorrect, index is instead %lu", index);
+	index = get_index(2, stack);
+	cr_expect_eq(index, 3, "index of 3rd item incorrect, index is instead %lu", index);
+	index = get_index(3, stack);
+	cr_expect_eq(index, 4, "index of 4th item incorrect, index is instead %lu", index);
+	index = get_index(5, stack);
+	cr_expect_eq(index, 5, "index of 5th item incorrect, index is instead %lu", index);
+	index = get_index(6, stack);
+	cr_expect_eq(index, 6, "index of 6th item incorrect, index is instead %lu", index);
+	index = get_index(8, stack);
+	cr_expect_eq(index, 7, "index of 7th item incorrect, index is instead %lu", index);
+	index = get_index(9, stack);
+	cr_expect_eq(index, 8, "index of 8th item incorrect, index is instead %lu", index);
+	index = get_index(10, stack);
+	cr_expect_eq(index, 9, "index of 9th item incorrect, index is instead %lu", index);
+	index = get_index(11, stack);
+	cr_expect_eq(index, 10, "index of 10th item incorrect, index is instead %lu", index);
+	index = get_index(20, stack);
+	cr_expect_eq(index, 11, "index of 11th item incorrect, index is instead %lu", index);
+	index = get_index(23, stack);
+	cr_expect_eq(index, 12, "index of 12th item incorrect, index is instead %lu", index);
+	index = get_index(55, stack);
+	cr_expect_eq(index, 13, "index of 13th item incorrect, index is instead %lu", index);
+	index = get_index(80, stack);
+	cr_expect_eq(index, 14, "index of 14th item incorrect, index is instead %lu", index);
+	index = get_index(257, stack);
+	cr_expect_eq(index, 15, "index of 15th 15tem incorrect, index is instead %lu", index);
+	free_stack(&stack);
+}
 
 Test(ps_fits_between, it_does_fit_pos)
 {
@@ -33,6 +87,7 @@ Test(ps_fits_between, it_does_fit_pos)
 	smallest = stack->head->next;
 	highest = stack->head->prev;
 	cr_assert_eq(fits_between(node, smallest, highest), 1, "node should fit");
+	free_stack(&stack);
 }
 
 Test(ps_fits_between, it_does_fit_neg)
@@ -50,6 +105,7 @@ Test(ps_fits_between, it_does_fit_neg)
 	smallest = stack->head->next;
 	highest = stack->head->prev;
 	cr_assert_eq(fits_between(smallest, highest, node), 1, "node should fit");
+	free_stack(&stack);
 }
 
 Test(ps_fits_between, it_does_fit_mix)
@@ -67,6 +123,7 @@ Test(ps_fits_between, it_does_fit_mix)
 	smallest = stack->head->next;
 	highest = stack->head->prev;
 	cr_assert_eq(fits_between(highest, node, smallest), 1, "node should fit");
+	free_stack(&stack);
 }
 
 Test(ps_fits_between, it_does_not_fit_pos)
@@ -84,6 +141,7 @@ Test(ps_fits_between, it_does_not_fit_pos)
 	smallest = stack->head->next;
 	highest = stack->head->prev;
 	cr_assert_eq(fits_between(node, smallest, highest), 1, "node should fit");
+	free_stack(&stack);
 }
 
 Test(ps_fits_between, it_does_not_fit_neg)
@@ -101,6 +159,7 @@ Test(ps_fits_between, it_does_not_fit_neg)
 	smallest = stack->head->next;
 	highest = stack->head->prev;
 	cr_assert_eq(fits_between(node, highest, smallest), 0, "node should not fit");
+	free_stack(&stack);
 }
 
 Test(ps_fits_between, it_does_not_fit_mix)
@@ -118,6 +177,5 @@ Test(ps_fits_between, it_does_not_fit_mix)
 	smallest = stack->head->next;
 	highest = stack->head->prev;
 	cr_assert_eq(fits_between(node, highest, smallest), 0, "node should not fit");
+	free_stack(&stack);
 }
-
-

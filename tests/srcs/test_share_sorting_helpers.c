@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/27 15:36:24 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/05 17:18:08 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/07 18:38:34 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ Test(sh_is_sorted, sorted_full_pos)
 	cr_assert_eq(append_to_stack(1117545, &stack), 1, "node should have been appended");
 	cr_assert_eq(append_to_stack(11176546, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 1, "incorrect return sorted stack - first element on top");
+	free_stack(&stack);
 }
 
 Test(sh_is_sorted, sorted_full_neg)
@@ -46,6 +47,7 @@ Test(sh_is_sorted, sorted_full_neg)
 	cr_assert_eq(append_to_stack(-145, &stack), 1, "node should have been appended");
 	cr_assert_eq(append_to_stack(-13, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 1, "incorrect return sorted stack - first element on top");
+	free_stack(&stack);
 }
 
 Test(sh_is_sorted, sorted_full_mix)
@@ -62,6 +64,7 @@ Test(sh_is_sorted, sorted_full_mix)
 	cr_assert_eq(append_to_stack(1, &stack), 1, "node should have been appended");
 	cr_assert_eq(append_to_stack(2, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 1, "incorrect return sorted stack - first element on top");
+	free_stack(&stack);
 }
 
 Test(sh_is_sorted, sorted_three)
@@ -73,6 +76,7 @@ Test(sh_is_sorted, sorted_three)
 	cr_assert_eq(append_to_stack(-4, &stack), 1, "node should have been appended");
 	cr_assert_eq(append_to_stack(8309572, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 1, "incorrect return sorted stack - first element on top");
+	free_stack(&stack);
 }
 
 Test(sh_is_sorted, sorted_two)
@@ -83,6 +87,7 @@ Test(sh_is_sorted, sorted_two)
 	cr_assert_eq(append_to_stack(-5, &stack), 1, "node should have been appended");
 	cr_assert_eq(append_to_stack(9, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 1, "incorrect return sorted stack - first element on top");
+	free_stack(&stack);
 }
 
 Test(sh_is_sorted, sorted_one)
@@ -92,6 +97,7 @@ Test(sh_is_sorted, sorted_one)
 	create_stack(&stack);
 	cr_assert_eq(append_to_stack(-379, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 1, "incorrect return sorted stack - first element on top");
+	free_stack(&stack);
 }
 
 Test(sh_is_sorted, sorted_empty)
@@ -100,6 +106,7 @@ Test(sh_is_sorted, sorted_empty)
 
 	create_stack(&stack);
 	cr_assert_eq(is_sorted(stack), 1, "incorrect return sorted stack - first element on top");
+	free_stack(&stack);
 }
 
 Test(sh_is_sorted, unsorted_full_pos)
@@ -116,6 +123,7 @@ Test(sh_is_sorted, unsorted_full_pos)
 	cr_assert_eq(append_to_stack(1117545, &stack), 1, "node should have been appended");
 	cr_assert_eq(append_to_stack(546, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 0, "incorrect return unsorted stack");
+	free_stack(&stack);
 }
 
 Test(sh_is_sorted, unsorted_full_neg)
@@ -132,6 +140,7 @@ Test(sh_is_sorted, unsorted_full_neg)
 	cr_assert_eq(append_to_stack(-145, &stack), 1, "node should have been appended");
 	cr_assert_eq(append_to_stack(-13, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 0, "incorrect return unsorted stack");
+	free_stack(&stack);
 }
 
 Test(sh_is_sorted, unsorted_full_mix)
@@ -148,6 +157,7 @@ Test(sh_is_sorted, unsorted_full_mix)
 	cr_assert_eq(append_to_stack(1, &stack), 1, "node should have been appended");
 	cr_assert_eq(append_to_stack(2, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 0, "incorrect return unsorted stack");
+	free_stack(&stack);
 }
 
 Test(sh_is_sorted, unsorted_three)
@@ -159,6 +169,7 @@ Test(sh_is_sorted, unsorted_three)
 	cr_assert_eq(append_to_stack(-4, &stack), 1, "node should have been appended");
 	cr_assert_eq(append_to_stack(-8, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 0, "incorrect return unsorted stack");
+	free_stack(&stack);
 }
 
 Test(sh_is_sorted, sorta_sorted_full_pos)
@@ -173,6 +184,7 @@ Test(sh_is_sorted, sorta_sorted_full_pos)
 	cr_assert_eq(append_to_stack(20, &stack), 1, "node should have been appended");
 	cr_assert_eq(append_to_stack(30, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 2, "incorrect return sorta sorted stack");
+	free_stack(&stack);
 }
 
 Test(sh_is_sorted, sorta_sorted_full_neg)
@@ -193,6 +205,7 @@ Test(sh_is_sorted, sorta_sorted_full_neg)
 	cr_assert_eq(append_to_stack(-97, &stack), 1, "node should have been appended");
 	cr_assert_eq(append_to_stack(-50, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 2, "incorrect return sorta sorted stack");
+	free_stack(&stack);
 }
 
 Test(sh_is_sorted, sorta_sorted_full_mix)
@@ -233,6 +246,7 @@ Test(sh_is_sorted, sorta_sorted_full_mix)
 	cr_assert_eq(append_to_stack(31, &stack), 1, "node should have been appended");
 	cr_assert_eq(append_to_stack(0, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 2, "incorrect return sorta sorted stack");
+	free_stack(&stack);
 }
 
 Test(sh_is_sorted, sorta_sorted_three_pos)
@@ -244,6 +258,7 @@ Test(sh_is_sorted, sorta_sorted_three_pos)
 	cr_assert_eq(append_to_stack(9, &stack), 1, "node should have been appended");
 	cr_assert_eq(append_to_stack(4, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 2, "incorrect return sorta sorted stack");
+	free_stack(&stack);
 }
 
 Test(sh_is_sorted, sorta_sorted_three_neg)
@@ -255,6 +270,7 @@ Test(sh_is_sorted, sorta_sorted_three_neg)
 	cr_assert_eq(append_to_stack(-99, &stack), 1, "node should have been appended");
 	cr_assert_eq(append_to_stack(-55, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 2, "incorrect return sorta sorted stack");
+	free_stack(&stack);
 }
 Test(sh_is_sorted, sorta_sorted_three_mix)
 {
@@ -265,6 +281,7 @@ Test(sh_is_sorted, sorta_sorted_three_mix)
 	cr_assert_eq(append_to_stack(-2, &stack), 1, "node should have been appended");
 	cr_assert_eq(append_to_stack(-4, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 2, "incorrect return sorta sorted stack");
+	free_stack(&stack);
 }
 
 Test(sh_is_sorted, sorta_sorted_two_pos)
@@ -275,6 +292,7 @@ Test(sh_is_sorted, sorta_sorted_two_pos)
 	cr_assert_eq(append_to_stack(5, &stack), 1, "node should have been appended");
 	cr_assert_eq(append_to_stack(4, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 2, "incorrect return sorta sorted stack");
+	free_stack(&stack);
 }
 
 Test(sh_is_sorted, sorta_sorted_two_neg)
@@ -285,6 +303,7 @@ Test(sh_is_sorted, sorta_sorted_two_neg)
 	cr_assert_eq(append_to_stack(-5, &stack), 1, "node should have been appended");
 	cr_assert_eq(append_to_stack(-9, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 2, "incorrect return sorta sorted stack");
+	free_stack(&stack);
 }
 
 Test(sh_is_sorted, sorta_sorted_two_mix)
@@ -295,4 +314,5 @@ Test(sh_is_sorted, sorta_sorted_two_mix)
 	cr_assert_eq(append_to_stack(7205, &stack), 1, "node should have been appended");
 	cr_assert_eq(append_to_stack(-2, &stack), 1, "node should have been appended");
 	cr_assert_eq(is_sorted(stack), 2, "incorrect return sorta sorted stack");
+	free_stack(&stack);
 }

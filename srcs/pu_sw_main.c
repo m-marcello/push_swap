@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/28 16:58:37 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/01 14:27:21 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/07 19:00:29 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int		main(int argc, char **argv)
 		free_stack(&stack_b);
 		return (0);
 	}
+	tree_sort(stack_a);
 	start_sort(options, stack_a, stack_b);
 	free_stack(&stack_a);
 	free_stack(&stack_b);

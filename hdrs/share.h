@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 15:15:21 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/07 15:44:31 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/07 18:39:19 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ typedef	struct	s_clist
 {
 	struct s_clist	*next;
 	struct s_clist	*prev;
+	int				data;
 	struct s_clist	*left;
 	struct s_clist	*right;
 	struct s_clist	*parent;
 	unsigned long	index;
-	int				data;
 }				t_clist;
 
 typedef struct	s_stack

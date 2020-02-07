@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   pu_sw_sort.c                                       :+:    :+:            */
+/*   pu_sw_insertion_sort.c                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/30 22:08:08 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/05 13:25:31 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/07 17:22:02 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,7 @@ void		start_sort(int options, t_stack *stack_a, t_stack *stack_b)
 		p_info->color = options - 1;
 		visualizer(p_info, "start", stack_a, stack_b);
 	}
+	// tree_sort(stack_a);
 	pre_sort(p_info, stack_a, stack_b);
 	sort_loop(p_info, stack_a, stack_b);
 	post_sort(p_info, stack_a, stack_b);
