@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 14:25:06 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/21 00:46:11 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/07 15:45:24 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 **	1				when everything went fine
 **	0				in case of error
 */
+// make create_stack static again
 
 int			create_stack(t_stack **stack)
 {
@@ -31,6 +32,7 @@ int			create_stack(t_stack **stack)
 	if (*stack == 0)
 		return (0);
 	(*stack)->head = 0;
+	(*stack)->trunk = 0;
 	(*stack)->node_count = 0;
 	return (1);
 }
@@ -83,6 +85,10 @@ static int	create_node(t_clist **node, int data)
 	(*node)->data = data;
 	(*node)->next = (*node);
 	(*node)->prev = (*node);
+	(*node)->left = 0;
+	(*node)->right = 0;
+	(*node)->parent = 0;
+	(*node)->index = 0;
 	return (1);
 }
 
