@@ -6,7 +6,7 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/08 17:27:45 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/02/05 17:16:59 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/02/07 14:41:09 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,6 @@ share_operations_push_swap share_operations_rotate share_sorting_helpers
 
 MINI_SOURCES_CHECK := check_instruction_handler
 
-MINI_SOURCES_PU_SW := pu_sw_sort pu_sw_visualizer pu_sw_entry_operations_pu_sw\
-pu_sw_entry_operations_rotate pu_sw_entry_operations_rev_rotate\
-pu_sw_sorting_helpers
+MINI_SOURCES_PU_SW := pu_sw_insertion_sort pu_sw_visualizer\
+pu_sw_entry_operations_rotate pu_sw_entry_operations_pu_sw\
+pu_sw_entry_operations_rev_rotate pu_sw_sorting_helpers
