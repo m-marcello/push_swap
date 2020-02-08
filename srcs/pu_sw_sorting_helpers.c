@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/27 15:22:33 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/07 17:26:30 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/08 15:50:24 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ int		fits_between(t_clist *node, t_clist *prev, t_clist *head)
 ** node
 **
 ** params
-**	t_clist *node	pointer to node that wants to be placed in stack a
-**	t_stack *st_a	pointer to struct representing stack a - sorted, stage 2
+**	t_clist *node		pointer to node that wants to be placed in stack a
+**	t_stack *stack_a	pointer to struct representing stack a - sorted, stage 2
 ** return
 **	1				if ra is more efficient
 **	0				if rra is more efficient
