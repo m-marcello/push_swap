@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/30 22:08:08 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/07 17:22:02 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/08 21:32:16 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 **	VOID
 */
 
-void	pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
+/* void	pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 {
 	while (is_sorted(stack_a) == 0 && stack_a->node_count > 3)
 	{
@@ -45,6 +45,38 @@ void	pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 			sa(p_info, stack_a, stack_b);
 		else
 			pb(p_info, stack_a, stack_b);
+	}
+	if (is_sorted(stack_a) == 0 && stack_a->node_count == 3)
+		sa(p_info, stack_a, stack_b);
+}
+ */
+
+static int	index_in_eps(t_clist *node, unsigned long eps,
+			unsigned long total_nodes)
+{
+	return (node->index < eps || node->index + eps > total_nodes);
+}
+
+void	pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
+{
+	unsigned long	eps;
+	unsigned long	total_nodes;
+
+	eps = 15;
+	total_nodes = stack_a->node_count;
+	while (is_sorted(stack_a) == 0 && stack_a->node_count > 3)
+	{
+		if (index_in_eps(stack_a->head, eps, total_nodes))
+			pb(p_info, stack_a, stack_b);
+		else if (index_in_eps(stack_a->head->prev, eps, total_nodes) &&
+			index_in_eps(stack_a->head->next, eps, total_nodes))
+			sa(p_info, stack_a, stack_b);
+		else if (index_in_eps(stack_a->head->prev, eps, total_nodes))
+			rra(p_info, stack_a, stack_b);
+		else
+			ra(p_info, stack_a, stack_b);
+		if (stack_b->node_count == 2 * eps - 1)
+			eps += 15;
 	}
 	if (is_sorted(stack_a) == 0 && stack_a->node_count == 3)
 		sa(p_info, stack_a, stack_b);
@@ -117,7 +149,7 @@ static void	insert_sort(t_print *p_info, t_stack *st_a, t_stack *st_b)
 	else if (fits_between(st_b->head->prev, st_a->head->prev, st_a->head))
 		rrb(p_info, st_a, st_b);
 	else if (fits_between(st_b->head->next, st_a->head->prev, st_a->head))
-		rb(p_info, st_a, st_b);
+		sb(p_info, st_a, st_b);
 	else if (fits_between(st_b->head->prev,
 		st_a->head->prev->prev, st_a->head->prev))
 		rrr(p_info, st_a, st_b);
@@ -180,12 +212,11 @@ void		start_sort(int options, t_stack *stack_a, t_stack *stack_b)
 		p_info->color = options - 1;
 		visualizer(p_info, "start", stack_a, stack_b);
 	}
-	// tree_sort(stack_a);
 	pre_sort(p_info, stack_a, stack_b);
 	sort_loop(p_info, stack_a, stack_b);
 	post_sort(p_info, stack_a, stack_b);
 	if (p_info == 0)
-		return;
+		return ;
 	ft_bzero(p_info, sizeof(p_info));
 	free(p_info);
 	p_info = 0;
