@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/30 22:08:08 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/12 15:48:52 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/12 18:51:44 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 			rra(p_info, stack_a, stack_b);
 		else
 			ra(p_info, stack_a, stack_b);
+		if (stack_b->head != 0 && stack_b->head->index * 2 < total_nodes)
+			rb(p_info, stack_a, stack_b);
 		if (stack_b->node_count == 2 * eps - 1)
 			eps += 15;
 	}
