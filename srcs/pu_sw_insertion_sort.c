@@ -6,13 +6,19 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/30 22:08:08 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/08 21:32:16 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/12 15:48:52 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pu_sw.h"
 #include "libft.h"
 #include <stdlib.h>
+
+static int	index_in_eps(t_clist *node, unsigned long eps,
+			unsigned long total_nodes)
+{
+	return (node->index < eps || node->index + eps > total_nodes);
+}
 
 /*
 ** -------------------------------------------------------------------------- **
@@ -29,33 +35,6 @@
 ** return
 **	VOID
 */
-
-/* void	pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
-{
-	while (is_sorted(stack_a) == 0 && stack_a->node_count > 3)
-	{
-		if (stack_a->head->prev->data < stack_a->head->data &&
-			stack_a->head->prev->data < stack_a->head->next->data)
-			rra(p_info, stack_a, stack_b);
-		else if (stack_a->head->next->data < stack_a->head->data &&
-			stack_a->head->data < stack_a->head->prev->data)
-			ra(p_info, stack_a, stack_b);
-		else if (stack_a->head->next->data < stack_a->head->prev->data &&
-			stack_a->head->prev->data < stack_a->head->data)
-			sa(p_info, stack_a, stack_b);
-		else
-			pb(p_info, stack_a, stack_b);
-	}
-	if (is_sorted(stack_a) == 0 && stack_a->node_count == 3)
-		sa(p_info, stack_a, stack_b);
-}
- */
-
-static int	index_in_eps(t_clist *node, unsigned long eps,
-			unsigned long total_nodes)
-{
-	return (node->index < eps || node->index + eps > total_nodes);
-}
 
 void	pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 {

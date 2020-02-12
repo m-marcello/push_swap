@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/27 15:22:33 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/08 15:50:24 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/12 15:48:31 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int		optimal_rotation(t_clist *node, t_stack *stack_a)
 		return (-1);
 	count = 1;
 	walk = stack_a->head;
-	while (fits_between(node, walk->prev, walk))
+	while (fits_between(node, walk->prev, walk) == 0)
 	{
 		++count;
 		walk = walk->next;
