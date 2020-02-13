@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/12 19:39:20 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/12 19:39:48 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/13 19:52:53 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	index_in_eps(t_clist *node, unsigned long eps,
 			unsigned long total_nodes)
 {
-	return (node->index < eps || node->index + eps > total_nodes);
+	return (node->index <= eps || node->index + eps >= total_nodes);
 }
 
 /*
@@ -40,7 +40,7 @@ void	pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 	unsigned long	total_nodes;
 
 	total_nodes = stack_a->node_count;
-	eps = total_nodes / 10;
+	eps = (total_nodes > 150) ? total_nodes / 15 : 10;
 	while (is_sorted(stack_a) == 0 && stack_a->node_count > 3)
 	{
 		if (index_in_eps(stack_a->head, eps, total_nodes))
@@ -52,10 +52,11 @@ void	pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 			rra(p_info, stack_a, stack_b);
 		else
 			ra(p_info, stack_a, stack_b);
-		if (stack_b->head != 0 && stack_b->head->index * 2 < total_nodes)
+		if (stack_b->head != 0 && stack_b->head->index * 2 < total_nodes &&
+			stack_b->head->next->index * 2 > total_nodes)
 			rb(p_info, stack_a, stack_b);
 		if (stack_b->node_count == 2 * eps - 1)
-			eps += total_nodes / 10;
+			eps = (total_nodes > 150) ? eps + total_nodes / 15 : eps + 10;
 	}
 	if (is_sorted(stack_a) == 0 && stack_a->node_count == 3)
 		sa(p_info, stack_a, stack_b);
