@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/30 22:08:08 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/12 19:39:56 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/13 16:17:41 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ void	post_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 
 static void	insert_sort(t_print *p_info, t_stack *st_a, t_stack *st_b)
 {
-	if (st_a->head == 0 || st_b->head == 0)
-		return ;
 	if (fits_between(st_b->head, st_a->head->prev, st_a->head))
 		pa(p_info, st_a, st_b);
 	else if (fits_between(st_b->head, st_a->head, st_a->head->next))
@@ -85,9 +83,10 @@ static void	insert_sort(t_print *p_info, t_stack *st_a, t_stack *st_b)
 	else if (fits_between(st_b->head->prev,
 		st_a->head->prev->prev, st_a->head->prev))
 		rrr(p_info, st_a, st_b);
-	else if (fits_between(st_b->head->next,
-		st_a->head->prev->prev, st_a->head->prev))
+	else if (fits_between(st_b->head->next, st_a->head, st_a->head->next))
 		rr(p_info, st_a, st_b);
+	else if (closer_to_median(st_b, st_a->node_count + st_b->node_count))
+		rrb(p_info, st_a, st_b);
 	else
 	{
 		if (optimal_rotation(st_b->head, st_a) == 1)

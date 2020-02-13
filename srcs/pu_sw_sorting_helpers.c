@@ -6,27 +6,36 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/27 15:22:33 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/12 15:48:31 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/13 16:20:52 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pu_sw.h"
 
-unsigned long	get_index(int data, t_stack *stack)
-{
-	t_clist	*walk;
+/*
+** -------------------------------------------------------------------------- **
+** function to check if the last element is closer to the median than the first
+**
+** params
+**	t_stack *stack				pointer to the stack to check for
+**	unsigned long total_nodes	the amount of all nodes
+** return
+**	1							if the last element is closer to the median
+**	0							if the first element is closer to the median
+*/
 
-	walk = stack->trunk;
-	while (walk != 0 && data != walk->data)
-	{
-		if (data < walk->data)
-			walk = walk->left;
-		else if (data > walk->data)
-			walk = walk->right;
-	}
-	if (walk == 0)
-		return (0);
-	return (walk->index);
+int				closer_to_median(t_stack *stack, unsigned long total_nodes)
+{
+	unsigned long	median;
+	unsigned long	distance_head;
+	unsigned long	distance_prev;
+
+	median = total_nodes / 2;
+	distance_head = (stack->head->index < median) ?
+		median - stack->head->index : stack->head->index - median;
+	distance_prev = (stack->head->prev->index < median) ?
+		median - stack->head->prev->index : stack->head->prev->index - median;
+	return (distance_prev < distance_head);
 }
 
 /*

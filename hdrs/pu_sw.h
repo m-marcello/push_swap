@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 15:25:08 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/07 17:18:06 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/13 16:25:50 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void			visualizer(t_print *p_info, char *inst, t_stack *stack_a,
 void			tree_sort(t_stack *stack);
 int				fits_between(t_clist *node, t_clist *prev, t_clist *next);
 int				optimal_rotation(t_clist *node, t_stack *stack_a);
+int				closer_to_median(t_stack *stack, unsigned long total_nodes);
 void			pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b);
 void			post_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b);
-unsigned long	get_index(int data, t_stack *stack);
 void			pa(t_print *p_info, t_stack *stack_a, t_stack *stack_b);
 void			pb(t_print *p_info, t_stack *stack_a, t_stack *stack_b);
 void			sa(t_print *p_info, t_stack *stack_a, t_stack *stack_b);
