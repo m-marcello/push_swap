@@ -6,13 +6,12 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/12 16:05:14 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 17:51:34 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 15:43:40 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "share.h"
 #include "libft.h"
-#include <stdlib.h> //REMOVE
 
 /*
 ** -------------------------------------------------------------------------- **
@@ -25,16 +24,16 @@
 **	0				in case of error
 */
 
-int			check_for_duplicates(t_stack **stack)
+static int	check_for_duplicates(t_stack *stack)
 {
 	t_clist	*walk_1;
 	t_clist	*walk_2;
 
-	walk_1 = (*stack)->head;
-	while (walk_1->next != (*stack)->head)
+	walk_1 = stack->head;
+	while (walk_1->next != stack->head)
 	{
 		walk_2 = walk_1->next;
-		while (walk_2 != (*stack)->head)
+		while (walk_2 != stack->head)
 		{
 			if (walk_1->data == walk_2->data)
 				return (0);
@@ -54,13 +53,13 @@ int			check_for_duplicates(t_stack **stack)
 **
 ** params
 **	char **str_arr	one input string split into multiple strings at ' '
-**	t_stack **stack	pointer to struct representing stack
+**	t_stack *stack	pointer to struct representing stack
 ** return
 **	1				when everthing went fine
 **	0				in case of error
 */
 
-static int	array_atoi(char **str_arr, t_stack **stack)
+static int	array_atoi(char **str_arr, t_stack *stack)
 {
 	int				i;
 	long long int	data;
@@ -88,13 +87,13 @@ static int	array_atoi(char **str_arr, t_stack **stack)
 ** params
 **	int argc		number of arguments passed to main
 **	char **argv		address of first argument of main
-**	t_stack **stack	pointer to struct representing stack a
+**	t_stack *stack	pointer to struct representing stack a
 ** return
 **	1				when everthing went fine
 **	0				in case of error
 */
 
-static int	split_input_strings(int argc, char **argv, t_stack **stack)
+static int	split_input_strings(int argc, char **argv, t_stack *stack)
 {
 	int		i;
 	char	**str_arr;
@@ -127,13 +126,13 @@ static int	split_input_strings(int argc, char **argv, t_stack **stack)
 ** params
 **	int argc		number of arguments passed to main
 **	char **argv		address of first argument of main
-**	t_stack **stack	pointer to struct representing stack a
+**	t_stack *stack	pointer to struct representing stack a
 ** return
 **	1				in case of valid input
 **	0				in case of invalid input
 */
 
-int			is_valid_input(int argc, char **argv, t_stack **stack)
+int			is_valid_input(int argc, char **argv, t_stack *stack)
 {
 	int		i;
 	int		j;

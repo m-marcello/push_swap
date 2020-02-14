@@ -6,11 +6,25 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/12 19:39:20 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/13 19:52:53 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 12:16:32 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pu_sw.h"
+
+/*
+** -------------------------------------------------------------------------- **
+** checks if the index of a given node is within an epsilon range around the
+** start and end of the stack
+**
+** params
+**	t_clist *node				the node of which the index is checked
+**	unsigned long eps			the given epsilon
+**	unsigned long total_nodes	the total amount of nodes in stack a and b
+** return
+**	1							if the index is within the epsilon range
+**	0							if it isn't
+*/
 
 static int	index_in_eps(t_clist *node, unsigned long eps,
 			unsigned long total_nodes)

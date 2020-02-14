@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/01 16:38:14 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/13 16:20:49 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 15:31:25 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,16 @@
 #include "pu_sw.h"
 #include "libft.h"
 
-int		create_stack(t_stack **stack);
+static int	create_stack(t_stack **stack)
+{
+	*stack = malloc(sizeof(t_stack));
+	if (*stack == 0)
+		return (0);
+	(*stack)->head = 0;
+	(*stack)->trunk = 0;
+	(*stack)->node_count = 0;
+	return (1);
+}
 
 Test(ps_fits_between, it_does_fit_pos)
 {
@@ -25,9 +34,9 @@ Test(ps_fits_between, it_does_fit_pos)
 	t_clist	*node;
 
 	cr_assert_eq(create_stack(&stack), 1, "stack should have been created");
-	cr_assert_eq(append_to_stack(1, &stack), 1, "new node should have been created");
-	cr_assert_eq(append_to_stack(0, &stack), 1, "new node should have been created");
-	cr_assert_eq(append_to_stack(2, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(1, stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(0, stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(2, stack), 1, "new node should have been created");
 	node = stack->head;
 	smallest = stack->head->next;
 	highest = stack->head->prev;
@@ -43,9 +52,9 @@ Test(ps_fits_between, it_does_fit_neg)
 	t_clist	*node;
 
 	cr_assert_eq(create_stack(&stack), 1, "stack should have been created");
-	cr_assert_eq(append_to_stack(-77892, &stack), 1, "new node should have been created");
-	cr_assert_eq(append_to_stack(-7289764, &stack), 1, "new node should have been created");
-	cr_assert_eq(append_to_stack(-3, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(-77892, stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(-7289764, stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(-3, stack), 1, "new node should have been created");
 	node = stack->head;
 	smallest = stack->head->next;
 	highest = stack->head->prev;
@@ -61,9 +70,9 @@ Test(ps_fits_between, it_does_fit_mix)
 	t_clist	*node;
 
 	cr_assert_eq(create_stack(&stack), 1, "stack should have been created");
-	cr_assert_eq(append_to_stack(1, &stack), 1, "new node should have been created");
-	cr_assert_eq(append_to_stack(-9782, &stack), 1, "new node should have been created");
-	cr_assert_eq(append_to_stack(2443, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(1, stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(-9782, stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(2443, stack), 1, "new node should have been created");
 	node = stack->head;
 	smallest = stack->head->next;
 	highest = stack->head->prev;
@@ -79,9 +88,9 @@ Test(ps_fits_between, it_does_not_fit_pos)
 	t_clist	*node;
 
 	cr_assert_eq(create_stack(&stack), 1, "stack should have been created");
-	cr_assert_eq(append_to_stack(1, &stack), 1, "new node should have been created");
-	cr_assert_eq(append_to_stack(0, &stack), 1, "new node should have been created");
-	cr_assert_eq(append_to_stack(2, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(1, stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(0, stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(2, stack), 1, "new node should have been created");
 	node = stack->head;
 	smallest = stack->head->next;
 	highest = stack->head->prev;
@@ -97,9 +106,9 @@ Test(ps_fits_between, it_does_not_fit_neg)
 	t_clist	*node;
 
 	cr_assert_eq(create_stack(&stack), 1, "stack should have been created");
-	cr_assert_eq(append_to_stack(-77892, &stack), 1, "new node should have been created");
-	cr_assert_eq(append_to_stack(-7289764, &stack), 1, "new node should have been created");
-	cr_assert_eq(append_to_stack(-3, &stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(-77892, stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(-7289764, stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(-3, stack), 1, "new node should have been created");
 	node = stack->head;
 	smallest = stack->head->next;
 	highest = stack->head->prev;
@@ -132,9 +141,9 @@ Test(ps_fits_between, it_does_not_fit_neg)
 // 	t_clist	*node;
 
 // 	cr_assert_eq(create_stack(&stack), 1, "stack should have been created");
-// 	cr_assert_eq(append_to_stack(1, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-9782, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(2443, &stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(1, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-9782, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(2443, stack), 1, "new node should have been created");
 // 	node = stack->head;
 // 	smallest = stack->head->next;
 // 	highest = stack->head->prev;
@@ -148,21 +157,21 @@ Test(ps_fits_between, it_does_not_fit_neg)
 // 	unsigned long	index;
 
 // 	cr_assert_eq(create_stack(&stack), 1, "stack should have been created");
-// 	cr_assert_eq(append_to_stack(80, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(23, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(11, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(1, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(2, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(5, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(0, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(202, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(3, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(10, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(6, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(257, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(8, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(9, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(55, &stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(80, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(23, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(11, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(1, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(2, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(5, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(0, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(202, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(3, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(10, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(6, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(257, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(8, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(9, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(55, stack), 1, "new node should have been created");
 // 	tree_sort(stack);
 
 // 	index = get_index(0, stack);
@@ -204,21 +213,21 @@ Test(ps_fits_between, it_does_not_fit_neg)
 // 	unsigned long	index;
 
 // 	cr_assert_eq(create_stack(&stack), 1, "stack should have been created");
-// 	cr_assert_eq(append_to_stack(-805267, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-23, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-1143, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-1, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-2, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-55, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-322, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-202, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-3, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-1032, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-6246782, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-257, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-84, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-93244, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-55332, &stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-805267, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-23, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-1143, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-1, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-2, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-55, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-322, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-202, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-3, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-1032, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-6246782, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-257, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-84, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-93244, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-55332, stack), 1, "new node should have been created");
 // 	tree_sort(stack);
 
 // 	index = get_index(-6246782, stack);
@@ -260,21 +269,21 @@ Test(ps_fits_between, it_does_not_fit_neg)
 // 	unsigned long	index;
 
 // 	cr_assert_eq(create_stack(&stack), 1, "stack should have been created");
-// 	cr_assert_eq(append_to_stack(-805267, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(23, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(1143, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(0, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-2, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-55, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(322, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-202, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(3075326, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-1032, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-6246782, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(257890, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-84643240, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(93244, &stack), 1, "new node should have been created");
-// 	cr_assert_eq(append_to_stack(-55332, &stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-805267, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(23, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(1143, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(0, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-2, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-55, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(322, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-202, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(3075326, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-1032, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-6246782, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(257890, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-84643240, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(93244, stack), 1, "new node should have been created");
+// 	cr_assert_eq(append_to_stack(-55332, stack), 1, "new node should have been created");
 // 	tree_sort(stack);
 
 // 	index = get_index(-84643240, stack);

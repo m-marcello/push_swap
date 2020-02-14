@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/07 15:01:42 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/08 16:01:51 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 13:14:28 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 /*
 ** -------------------------------------------------------------------------- **
-** given the data of the last leaf that had been added, this function updates
-** the indices of all elements in the tree which data is higher recursively
+** given the data of the last leaf that had been added, this function
+** recursively updates the indices of all elements in the tree containing higher
+** data
 **
 ** params
 **	int data		data of the last added node
@@ -98,9 +99,6 @@ static void		grow_tree(t_stack *stack, t_clist *node)
 ** -------------------------------------------------------------------------- **
 ** sorts the stack in a binary tree and saves the index of the position of each
 ** node in the sorted stack
-** I chose the representation of a binary tree because like this I will be able
-** to quickly look up the index of a given node without needing to sort the data
-** in an array
 **
 ** params
 **	t_stack *stack	pointer to struct representing stack

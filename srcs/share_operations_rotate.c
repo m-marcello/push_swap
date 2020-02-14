@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 19:09:31 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 18:05:21 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 15:47:43 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 **
 ** params
 **	t_stack *stack		pointer to struct representing stack
+** return
+**	VOID
 */
 
 void	operation_rotate(t_stack *stack)
@@ -36,6 +38,8 @@ void	operation_rotate(t_stack *stack)
 **
 ** params
 **	t_stack *stack		pointer to struct representing stack
+** return
+**	VOID
 */
 
 void	operation_rev_rotate(t_stack *stack)
@@ -55,6 +59,8 @@ void	operation_rev_rotate(t_stack *stack)
 ** params
 **	t_stack *stack_1	pointer to struct representing one stack
 **	t_stack *stack_2	pointer to struct representing the other stack
+** return
+**	VOID
 */
 
 void	operation_rr(t_stack *stack_1, t_stack *stack_2)
@@ -70,6 +76,8 @@ void	operation_rr(t_stack *stack_1, t_stack *stack_2)
 ** params
 **	t_stack *stack_1	pointer to struct representing one stack
 **	t_stack *stack_2	pointer to struct representing the other stack
+** return
+**	VOID
 */
 
 void	operation_rrr(t_stack *stack_1, t_stack *stack_2)

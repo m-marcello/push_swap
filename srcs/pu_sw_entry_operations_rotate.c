@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/01 14:59:31 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/01 15:03:18 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 13:04:11 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 **	t_print	*p_info		pointer to printing information
 **	t_stack *stack_a	pointer to struct for stack a
 **	t_stack *stack_b	pointer to struct for stack b
+** return
+**	VOID
 */
 
 void	ra(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
@@ -36,6 +38,8 @@ void	ra(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 **	t_print	*p_info		pointer to printing information
 **	t_stack *stack_a	pointer to struct for stack a
 **	t_stack *stack_b	pointer to struct for stack b
+** return
+**	VOID
 */
 
 void	rb(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
@@ -46,12 +50,14 @@ void	rb(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 
 /*
 ** -------------------------------------------------------------------------- **
-** function to rotate both stacks up, first elements become last
+** function to rotate both stacks up, first elements becomes last
 **
 ** params
 **	t_print	*p_info		pointer to printing information
 **	t_stack *stack_a	pointer to struct for stack a
 **	t_stack *stack_b	pointer to struct for stack b
+** return
+**	VOID
 */
 
 void	rr(t_print *p_info, t_stack *stack_a, t_stack *stack_b)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   share_operations_push_swap.c                       :+:    :+:            */
+/*   share_operations_pu_sw.c                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 19:41:47 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 18:04:36 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 15:46:48 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 ** params
 **	t_stack *dst		pointer to struct representing dst
 **	t_clist *to_push	element to push to first postion of dst
+** return
+**	VOID
 */
 
 static void	operation_push_2nd(t_stack *dst, t_clist *to_push)
@@ -46,6 +48,8 @@ static void	operation_push_2nd(t_stack *dst, t_clist *to_push)
 ** params
 **	t_stack *dst	pointer to struct representing dst
 **	t_stack *src	pointer to struct representing src
+** return
+**	VOID
 */
 
 void		operation_push(t_stack *dst, t_stack *src)
@@ -73,6 +77,8 @@ void		operation_push(t_stack *dst, t_stack *src)
 **
 ** params
 **	t_stack *stack		pointer to struct representing stack
+** return
+**	VOID
 */
 
 void		operation_swap(t_stack *stack)
@@ -103,6 +109,8 @@ void		operation_swap(t_stack *stack)
 ** params
 **	t_stack *stack_1	pointer to struct representing one stack
 **	t_stack *stack_2	pointer to struct representing the other stack
+** return
+**	VOID
 */
 
 void		operation_ss(t_stack *stack_1, t_stack *stack_2)

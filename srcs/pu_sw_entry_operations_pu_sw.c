@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/01 14:45:45 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/03 16:50:07 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 12:42:51 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 **	t_print	*p_info		pointer to printing information
 **	t_stack *stack_a	pointer to struct for stack a
 **	t_stack *stack_b	pointer to struct for stack b
+** return
+**	VOID
 */
 
 void	pa(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
@@ -36,6 +38,8 @@ void	pa(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 **	t_print	*p_info		pointer to printing information
 **	t_stack *stack_a	pointer to struct for stack a
 **	t_stack *stack_b	pointer to struct for stack b
+** return
+**	VOID
 */
 
 void	pb(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
@@ -54,6 +58,8 @@ void	pb(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 **	t_print	*p_info		pointer to printing information
 **	t_stack *stack_a	pointer to struct for stack a
 **	t_stack *stack_b	pointer to struct for stack b
+** return
+**	VOID
 */
 
 void	sa(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
@@ -78,6 +84,8 @@ void	sa(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 **	t_print	*p_info		pointer to printing information
 **	t_stack *stack_a	pointer to struct for stack a
 **	t_stack *stack_b	pointer to struct for stack b
+** return
+**	VOID
 */
 
 void	sb(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
@@ -94,6 +102,8 @@ void	sb(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 **	t_print	*p_info		pointer to printing information
 **	t_stack *stack_a	pointer to struct for stack a
 **	t_stack *stack_b	pointer to struct for stack b
+** return
+**	VOID
 */
 
 void	ss(t_print *p_info, t_stack *stack_a, t_stack *stack_b)

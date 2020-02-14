@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/24 19:20:21 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/03 17:33:57 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 13:18:03 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ static void	print_stacks(t_print *p_info, t_clist *walk_a, t_clist *walk_b)
 ** -------------------------------------------------------------------------- **
 ** entry point for an optional visualization of the current state of the
 ** two stacks
-**	- with or without highlighting the last moved items, depending on the
-**	color variable in p_info
+**	->	with or without highlighting the last moved items, depending on the
+**		color variable in p_info
 **
 ** params
 **	t_print *p_info		struct with all the relevant info regarding printing

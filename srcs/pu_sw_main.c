@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/28 16:58:37 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/07 19:00:29 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 15:36:56 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 **	int *options	pointer to save the options
 ** return
 **	arg_off			number of option arguments
-**	0				in case of error
 */
 
 static int	get_options(char **argv, int *options)
@@ -74,7 +73,7 @@ int		main(int argc, char **argv)
 	if (create_both_stacks(&stack_a, &stack_b) == 0)
 		return (0);
 	if (is_valid_input(argc - 1 - arg_off, &argv[1 + arg_off],
-			&stack_a) == 0)
+			stack_a) == 0)
 	{
 		write(2, "Error\n", 6);
 		free_stack(&stack_a);

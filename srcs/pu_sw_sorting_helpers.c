@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/27 15:22:33 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/13 16:20:52 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 13:11:07 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int				closer_to_median(t_stack *stack, unsigned long total_nodes)
 **	node->data < head->data < prev->data
 ** or bigger then both
 **	head->data < prev->data < node->data
+** note:
+**	will return 0 when prev->data = head->data
 **
 ** params
 **	t_clist *node	pointer to node that wants to be placed between
@@ -65,7 +67,7 @@ int		fits_between(t_clist *node, t_clist *prev, t_clist *head)
 
 /*
 ** -------------------------------------------------------------------------- **
-** counts if the it better to rotate or reverse rotate stack a to fit a given
+** counts if it is better to rotate or reverse rotate stack a to push a given
 ** node
 **
 ** params

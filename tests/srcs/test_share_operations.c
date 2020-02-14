@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 12:29:32 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 13:06:10 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 15:42:37 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,16 @@
 #include <criterion/assert.h>
 #include "share.h"
 
-int		create_stack(t_stack **stack);
+static int	create_stack(t_stack **stack)
+{
+	*stack = malloc(sizeof(t_stack));
+	if (*stack == 0)
+		return (0);
+	(*stack)->head = 0;
+	(*stack)->trunk = 0;
+	(*stack)->node_count = 0;
+	return (1);
+}
 
 Test(sh_operations_push, full_full)
 {
@@ -27,15 +36,15 @@ Test(sh_operations_push, full_full)
 	t_clist	*last_dst;
 
 	cr_assert(create_both_stacks(&dst, &src) == 1, "Error when creating the stacks");
-	cr_assert(append_to_stack(5, &dst) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(-43, &dst) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(6, &dst) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(87, &dst) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(2, &src) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(-5863, &src) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(0, &src) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(24, &src) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(42, &src) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(5, dst) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-43, dst) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(6, dst) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(87, dst) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(2, src) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-5863, src) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(0, src) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(24, src) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(42, src) == 1, "Error when appending nodes");
 	first_src = src->head;
 	second_src = src->head->next;
 	last_src = src->head->prev;
@@ -92,9 +101,9 @@ Test(sh_operations_push, one_two)
 	t_clist	*last_dst;
 
 	cr_assert(create_both_stacks(&dst, &src) == 1, "Error when creating the stacks");
-	cr_assert(append_to_stack(54, &dst) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(263, &src) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(-863, &src) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(54, dst) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(263, src) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-863, src) == 1, "Error when appending nodes");
 	first_src = src->head;
 	second_src = src->head->next;
 	last_src = src->head->prev;
@@ -137,9 +146,9 @@ Test(sh_operations_push, two_one)
 	t_clist	*last_dst;
 
 	cr_assert(create_both_stacks(&dst, &src) == 1, "Error when creating the stacks");
-	cr_assert(append_to_stack(63, &dst) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(-785487, &dst) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(42, &src) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(63, dst) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-785487, dst) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(42, src) == 1, "Error when appending nodes");
 	first_src = src->head;
 	first_dst = dst->head;
 	last_dst = dst->head->prev;
@@ -175,12 +184,12 @@ Test(sh_operations_push, empty_full)
 	t_clist	*last_src;
 
 	cr_assert(create_both_stacks(&dst, &src) == 1, "Error when creating the stacks");
-	cr_assert(append_to_stack(672, &src) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(-25, &src) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(54, &src) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(234, &src) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(42, &src) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(424242, &src) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(672, src) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-25, src) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(54, src) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(234, src) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(42, src) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(424242, src) == 1, "Error when appending nodes");
 	first_src = src->head;
 	second_src = src->head->next;
 	last_src = src->head->prev;
@@ -222,10 +231,10 @@ Test(sh_operations_push, full_empty)
 	t_clist	*last_dst;
 
 	cr_assert(create_both_stacks(&dst, &src) == 1, "Error when creating the stacks");
-	cr_assert(append_to_stack(5, &dst) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(-43, &dst) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(6, &dst) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(87, &dst) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(5, dst) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-43, dst) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(6, dst) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(87, dst) == 1, "Error when appending nodes");
 	first_dst = dst->head;
 	last_dst = dst->head->prev;
 	operation_push(dst, src);
@@ -273,15 +282,15 @@ Test(sh_operations_swap, full)
 	t_clist	*last;
 
 	cr_assert(create_stack(&stack) == 1, "Error when creating the stack");
-	cr_assert(append_to_stack(14, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(1322, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(2343214, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(1544, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(-14, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(4, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(-32, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(1, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(-288724679, &stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(14, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(1322, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(2343214, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(1544, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-14, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(4, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-32, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(1, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-288724679, stack) == 1, "Error when appending nodes");
 	first = stack->head;
 	second = stack->head->next;
 	third = stack->head->next->next;
@@ -325,9 +334,9 @@ Test(sh_operations_swap, three_nodes)
 	t_clist	*last;
 
 	cr_assert(create_stack(&stack) == 1, "Error when creating the stack");
-	cr_assert(append_to_stack(-4, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(-32, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(-8724679, &stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-4, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-32, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-8724679, stack) == 1, "Error when appending nodes");
 	first = stack->head;
 	second = stack->head->next;
 	third = stack->head->next->next;
@@ -357,8 +366,8 @@ Test(sh_operations_swap, two_nodes)
 	t_clist	*second;
 
 	cr_assert(create_stack(&stack) == 1, "Error when creating the stack");
-	cr_assert(append_to_stack(614, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(-4679, &stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(614, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-4679, stack) == 1, "Error when appending nodes");
 	first = stack->head;
 	second = stack->head->next;
 	operation_swap(stack);
@@ -382,7 +391,7 @@ Test(sh_operations_swap, one_node)
 	t_clist	*last;
 
 	cr_assert(create_stack(&stack) == 1, "Error when creating the stack");
-	cr_assert(append_to_stack(1, &stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(1, stack) == 1, "Error when appending nodes");
 	first = stack->head;
 	last = stack->head->prev;
 	operation_swap(stack);
@@ -412,14 +421,14 @@ Test(sh_operations_rotate, full)
 	t_clist	*last;
 
 	cr_assert(create_stack(&stack) == 1, "Error when creating the stack");
-	cr_assert(append_to_stack(311, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(2, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(3, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(1, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(32, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(6, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(5, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(8, &stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(311, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(2, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(3, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(1, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(32, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(6, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(5, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(8, stack) == 1, "Error when appending nodes");
 	first = stack->head;
 	second = stack->head->next;
 	third = stack->head->next->next;
@@ -460,9 +469,9 @@ Test(sh_operations_rotate, three_nodes)
 	t_clist	*last;
 
 	cr_assert(create_stack(&stack) == 1, "Error when creating the stack");
-	cr_assert(append_to_stack(1, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(6, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(8, &stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(1, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(6, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(8, stack) == 1, "Error when appending nodes");
 	first = stack->head;
 	second = stack->head->next;
 	third = stack->head->next->next;
@@ -492,8 +501,8 @@ Test(sh_operations_rotate, two_nodes)
 	t_clist	*last;
 
 	cr_assert(create_stack(&stack) == 1, "Error when creating the stack");
-	cr_assert(append_to_stack(-311, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(2, &stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-311, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(2, stack) == 1, "Error when appending nodes");
 	first = stack->head;
 	second = stack->head->next;
 	last = stack->head->prev;
@@ -517,7 +526,7 @@ Test(sh_operations_rotate, one_node)
 	t_clist	*first;
 
 	cr_assert(create_stack(&stack) == 1, "Error when creating the stack");
-	cr_assert(append_to_stack(311, &stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(311, stack) == 1, "Error when appending nodes");
 	first = stack->head;
 	operation_rotate(stack);
 	cr_expect(stack->node_count == 1, "node count should be the same after rotate");
@@ -547,14 +556,14 @@ Test(sh_operations_rev_rotate, full)
 	t_clist	*second_last;
 
 	cr_assert(create_stack(&stack) == 1, "Error when creating the stack");
-	cr_assert(append_to_stack(311, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(2, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(3, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(1, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(32, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(6, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(5, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(8, &stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(311, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(2, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(3, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(1, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(32, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(6, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(5, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(8, stack) == 1, "Error when appending nodes");
 	first = stack->head;
 	second = stack->head->next;
 	last = stack->head->prev;
@@ -595,9 +604,9 @@ Test(sh_operations_rev_rotate, three_nodes)
 	t_clist	*second_last;
 
 	cr_assert(create_stack(&stack) == 1, "Error when creating the stack");
-	cr_assert(append_to_stack(-3, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(-1, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(-5, &stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-3, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-1, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-5, stack) == 1, "Error when appending nodes");
 	first = stack->head;
 	second = stack->head->next;
 	last = stack->head->prev;
@@ -627,8 +636,8 @@ Test(sh_operations_rev_rotate, two_nodes)
 	t_clist	*second_last;
 
 	cr_assert(create_stack(&stack) == 1, "Error when creating the stack");
-	cr_assert(append_to_stack(-3, &stack) == 1, "Error when appending nodes");
-	cr_assert(append_to_stack(-5, &stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-3, stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-5, stack) == 1, "Error when appending nodes");
 	first = stack->head;
 	last = stack->head->prev;
 	second_last = stack->head->prev->prev;
@@ -653,7 +662,7 @@ Test(sh_operations_rev_rotate, one_node)
 	t_clist	*last;
 
 	cr_assert(create_stack(&stack) == 1, "Error when creating the stack");
-	cr_assert(append_to_stack(-3, &stack) == 1, "Error when appending nodes");
+	cr_assert(append_to_stack(-3, stack) == 1, "Error when appending nodes");
 	first = stack->head;
 	last = stack->head->prev;
 	operation_rev_rotate(stack);

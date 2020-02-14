@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/20 22:18:26 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 18:04:38 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 15:21:18 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 **
 ** params
 **	t_stack **node	pointer to the node
+** return
+**	VOID
 */
 
 static void	free_node(t_clist **node)
@@ -26,6 +28,10 @@ static void	free_node(t_clist **node)
 	(*node)->next = 0;
 	(*node)->prev = 0;
 	(*node)->data = 0;
+	(*node)->left = 0;
+	(*node)->right = 0;
+	(*node)->parent = 0;
+	(*node)->index = 0;
 	free(*node);
 	*node = 0;
 }
@@ -36,6 +42,8 @@ static void	free_node(t_clist **node)
 **
 ** params
 **	t_stack **stack	pointer to struct representing stack
+** return
+**	VOID
 */
 
 void		free_stack(t_stack **stack)
@@ -64,6 +72,8 @@ void		free_stack(t_stack **stack)
 **
 ** params
 **	char	***arr	address of the string array
+** return
+**	VOID
 */
 
 void		free_str_arr(char ***str_arr)

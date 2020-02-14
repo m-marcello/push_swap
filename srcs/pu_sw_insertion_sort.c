@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/30 22:08:08 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/13 16:17:41 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 13:04:03 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 ** params
 **	t_print *p_info		struct with all the relevant info regarding printing
 **	t_stack *stack_a	pointer to struct representing stack a - sorted stage 2
-**	t_stack *stack_b	pointer to struct representing stack b
+**	t_stack *stack_b	pointer to struct representing stack b - empty
 ** return
 **	VOID
 */
@@ -116,8 +116,8 @@ static void	sort_loop(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 
 /*
 ** -------------------------------------------------------------------------- **
-** entry point for the sorting algorithm
-** generates struct for holding the printing information if any
+** entry point for the insertion sort algorithm
+** generates struct for holding the printing information (if any)
 **
 ** params
 **	int options			if 0 -> only print instructions

@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 14:25:06 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/07 17:25:25 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 15:43:54 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 /*
 ** -------------------------------------------------------------------------- **
-** creates and initializes the struct that holds the head of the stack and
-** the numbers of nodes in the stack
+** creates and initializes the struct that holds:
+**	*head		pointer to first element to stack
+**	*trunk		start of treesorted stack
+**	node_count	number of nodes in the stack
 **
 ** params
 **	t_stack **stack	address of the struct
@@ -24,9 +26,8 @@
 **	1				when everything went fine
 **	0				in case of error
 */
-// make create_stack static again
 
-int			create_stack(t_stack **stack)
+static int	create_stack(t_stack **stack)
 {
 	*stack = malloc(sizeof(t_stack));
 	if (*stack == 0)
@@ -67,7 +68,7 @@ int			create_both_stacks(t_stack **stack_a, t_stack **stack_b)
 
 /*
 ** -------------------------------------------------------------------------- **
-** creates one node of t_clist and initializes it
+** creates one node of type t_clist and initializes it
 **
 ** params
 **	t_clist **node	addres to node that needs to be crated
@@ -94,39 +95,38 @@ static int	create_node(t_clist **node, int data)
 
 /*
 ** -------------------------------------------------------------------------- **
-** appends the entries from an array of strings to the stack
-** if there is no stack yet it will be created
+** appends a node with the given data to the stack
 **
 ** params
 **	int data		data for the node to be appended to stack
-**	t_stack **stack	pointer to struct representing stack
+**	t_stack *stack	pointer to struct representing stack
 ** return
 **	1				when everthing went fine
 **	0				in case of error
 */
 
-int			append_to_stack(int data, t_stack **stack)
+int			append_to_stack(int data, t_stack *stack)
 {
 	t_clist	*new_node;
 
 	if (create_node(&new_node, data) == 0)
 		return (0);
-	if ((*stack)->node_count == 0)
-		(*stack)->head = new_node;
-	else if ((*stack)->node_count == 1)
+	if (stack->node_count == 0)
+		stack->head = new_node;
+	else if (stack->node_count == 1)
 	{
-		(*stack)->head->next = new_node;
-		(*stack)->head->prev = new_node;
-		new_node->next = (*stack)->head;
-		new_node->prev = (*stack)->head;
+		stack->head->next = new_node;
+		stack->head->prev = new_node;
+		new_node->next = stack->head;
+		new_node->prev = stack->head;
 	}
 	else
 	{
-		new_node->next = (*stack)->head;
-		new_node->prev = (*stack)->head->prev;
-		(*stack)->head->prev->next = new_node;
-		(*stack)->head->prev = new_node;
+		new_node->next = stack->head;
+		new_node->prev = stack->head->prev;
+		stack->head->prev->next = new_node;
+		stack->head->prev = new_node;
 	}
-	(*stack)->node_count++;
+	stack->node_count++;
 	return (1);
 }
