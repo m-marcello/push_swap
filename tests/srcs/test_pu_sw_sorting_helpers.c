@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/01 16:38:14 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/14 17:06:10 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 17:14:06 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,17 @@ Test(ps_closer_to_median, tie)
 	stack->head->index = 5;
 	stack->head->next->index = 15;
 	cr_expect_eq(closer_to_median(stack->head, stack->head->next, 20), 0, "function should return 0 when both nodes are in equal distance to median");
+	free_stack(&stack);
+}
+
+Test(ps_closer_to_median, same_element)
+{
+	t_stack *stack;
+
+	cr_assert_eq(create_stack(&stack), 1, "stack should have been created");
+	cr_assert_eq(append_to_stack(-10, stack), 1, "new node should have been created");
+	stack->head->index = 5;
+	cr_expect_eq(closer_to_median(stack->head, stack->head, 20), 0, "comparison to the same element should return 0");
 	free_stack(&stack);
 }
 
