@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 19:41:47 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/14 15:46:48 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 15:50:36 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void		operation_push(t_stack *dst, t_stack *src)
 
 /*
 ** -------------------------------------------------------------------------- **
-** swaps the first two elements of the stack
+** swaps the first two elements of a stack
 **
 ** params
 **	t_stack *stack		pointer to struct representing stack
