@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/27 15:22:33 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/14 13:11:07 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 17:04:12 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,23 @@
 **	t_stack *stack				pointer to the stack to check for
 **	unsigned long total_nodes	the amount of all nodes
 ** return
-**	1							if the last element is closer to the median
-**	0							if the first element is closer to the median
+**	1							if the nd_1->index is closer to the median
+**	0							if the nd_2->index is closer to the median
 */
 
-int				closer_to_median(t_stack *stack, unsigned long total_nodes)
+int				closer_to_median(t_clist *nd_1, t_clist *nd_2,
+				unsigned long total_nodes)
 {
 	unsigned long	median;
-	unsigned long	distance_head;
-	unsigned long	distance_prev;
+	unsigned long	distance_1;
+	unsigned long	distance_2;
 
 	median = total_nodes / 2;
-	distance_head = (stack->head->index < median) ?
-		median - stack->head->index : stack->head->index - median;
-	distance_prev = (stack->head->prev->index < median) ?
-		median - stack->head->prev->index : stack->head->prev->index - median;
-	return (distance_prev < distance_head);
+	distance_1 = (nd_1->index < median) ?
+		median - nd_1->index : nd_1->index - median;
+	distance_2 = (nd_2->index < median) ?
+		median - nd_2->index : nd_2->index - median;
+	return (distance_2 > distance_1);
 }
 
 /*

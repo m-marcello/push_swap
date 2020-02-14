@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/01 16:38:14 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/14 15:31:25 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 17:06:10 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,45 @@ static int	create_stack(t_stack **stack)
 	(*stack)->trunk = 0;
 	(*stack)->node_count = 0;
 	return (1);
+}
+
+Test(ps_closer_to_median, first_closer)
+{
+	t_stack *stack;
+
+	cr_assert_eq(create_stack(&stack), 1, "stack should have been created");
+	cr_assert_eq(append_to_stack(-10, stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(10, stack), 1, "new node should have been created");
+	stack->head->index = 5;
+	stack->head->next->index = 15;
+	cr_expect_eq(closer_to_median(stack->head, stack->head->next, 16), 1, "first node should be closer to median");
+	free_stack(&stack);
+}
+
+Test(ps_closer_to_median, second_closer)
+{
+	t_stack *stack;
+
+	cr_assert_eq(create_stack(&stack), 1, "stack should have been created");
+	cr_assert_eq(append_to_stack(-10, stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(10, stack), 1, "new node should have been created");
+	stack->head->index = 5;
+	stack->head->next->index = 15;
+	cr_expect_eq(closer_to_median(stack->head, stack->head->next, 21), 0, "second node should be closer to median");
+	free_stack(&stack);
+}
+
+Test(ps_closer_to_median, tie)
+{
+	t_stack *stack;
+
+	cr_assert_eq(create_stack(&stack), 1, "stack should have been created");
+	cr_assert_eq(append_to_stack(-10, stack), 1, "new node should have been created");
+	cr_assert_eq(append_to_stack(10, stack), 1, "new node should have been created");
+	stack->head->index = 5;
+	stack->head->next->index = 15;
+	cr_expect_eq(closer_to_median(stack->head, stack->head->next, 20), 0, "function should return 0 when both nodes are in equal distance to median");
+	free_stack(&stack);
 }
 
 Test(ps_fits_between, it_does_fit_pos)
