@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/27 15:22:33 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/14 17:04:12 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 17:10:14 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@
 **	0							if the nd_2->index is closer to the median
 */
 
-int				closer_to_median(t_clist *nd_1, t_clist *nd_2,
-				unsigned long total_nodes)
+int	closer_to_median(t_clist *nd_1, t_clist *nd_2, unsigned long total_nodes)
 {
 	unsigned long	median;
 	unsigned long	distance_1;
@@ -59,7 +58,7 @@ int				closer_to_median(t_clist *nd_1, t_clist *nd_2,
 **	0				if it doesn't
 */
 
-int		fits_between(t_clist *node, t_clist *prev, t_clist *head)
+int	fits_between(t_clist *node, t_clist *prev, t_clist *head)
 {
 	return ((prev->data < node->data && node->data < head->data)
 		|| (node->data < head->data && head->data < prev->data)
@@ -79,7 +78,7 @@ int		fits_between(t_clist *node, t_clist *prev, t_clist *head)
 **	0				if rra is more efficient
 */
 
-int		optimal_rotation(t_clist *node, t_stack *stack_a)
+int	optimal_rotation(t_clist *node, t_stack *stack_a)
 {
 	unsigned int	count;
 	t_clist			*walk;

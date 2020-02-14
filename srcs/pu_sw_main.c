@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/28 16:58:37 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/14 15:36:56 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 17:10:36 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	get_options(char **argv, int *options)
 	return (0);
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	int		arg_off;
 	int		options;

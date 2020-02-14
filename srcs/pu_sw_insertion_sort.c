@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/30 22:08:08 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/14 17:05:13 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 17:09:46 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 **	VOID
 */
 
-void	post_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
+void		post_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 {
 	unsigned int	count;
 	t_clist			*walk;

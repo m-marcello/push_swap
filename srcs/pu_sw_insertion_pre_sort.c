@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/12 19:39:20 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/02/14 12:16:32 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/14 17:09:12 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	index_in_eps(t_clist *node, unsigned long eps,
 **	VOID
 */
 
-void	pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
+void		pre_sort(t_print *p_info, t_stack *stack_a, t_stack *stack_b)
 {
 	unsigned long	eps;
 	unsigned long	total_nodes;
