@@ -6,7 +6,7 @@
 /*   By: mmarcell <mmarcell@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/25 17:24:03 by mmarcell       #+#    #+#                */
-/*   Updated: 2020/01/31 17:46:01 by mmarcell      ########   odam.nl         */
+/*   Updated: 2020/02/15 14:55:19 by mmarcell      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ int			instruction_handler(t_stack *stack_a, t_stack *stack_b)
 	int		ret;
 
 	ret = get_next_line(0, &inst);
+	if (ret == 0)
+		return (1);
 	if (ret == -1)
 		return (0);
 	while (ret == 1)
