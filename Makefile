@@ -6,7 +6,7 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/07 18:47:20 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/02/17 14:31:20 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/02/17 14:49:23 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ clean: lclean
 	@make clean -C $(LIBFT_PATH) | sed -e $$'s/^/$(LIBFT_PATH): /'
 
 lclean:
-	@rm -fv $(OBJS) | sed -e $$'s/^/ $(MINUS) /'
+	@rm -rfv objs | sed -e $$'s/^/ $(MINUS) /'
 
 fclean: clean lfclean
 	@rm -fv $(LIBFT) | sed -e $$'s/^/ $(MINUS) /'
