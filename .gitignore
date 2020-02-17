@@ -1,0 +1,4 @@
+*.o
+*json*
+checker
+push_swap
