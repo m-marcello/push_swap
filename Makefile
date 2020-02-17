@@ -6,7 +6,7 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/07 18:47:20 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/31 20:58:13 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/02/17 12:43:36 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,8 +67,5 @@ re: fclean all
 lre: lfclean all
 
 FORCE:
-
-test: $(LIBFT) $(OBJS) FORCE
-	@make test -C tests | sed -e $$'s/^/.\/tests /'
 
 .PHONY: all clean fclean re FORCE
