@@ -6,7 +6,7 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/07 18:47:20 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/02/17 12:43:36 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/02/17 12:46:40 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,16 +34,16 @@ MINUS := \033[38;5;160m-\033[0;00m
 
 all: $(NAME1) $(NAME2)
 
-$(NAME1): $(LIBFT) $(OBJS_CHECK) $(OBJS_SHARE) # REMOVE -g FLAG
-	@$(CC) -g -o $@ $^ $(LIBFT)
+$(NAME1): $(LIBFT) $(OBJS_CHECK) $(OBJS_SHARE)
+	@$(CC) -o $@ $^ $(LIBFT)
 	@echo " ${PLUS} $@"
 
-$(NAME2): $(LIBFT) $(OBJS_PU_SW) $(OBJS_SHARE) # REMOVE -g FLAG
-	@$(CC) -g -o $@ $^ $(LIBFT)
+$(NAME2): $(LIBFT) $(OBJS_PU_SW) $(OBJS_SHARE)
+	@$(CC) -o $@ $^ $(LIBFT)
 	@echo " ${PLUS} $@"
 
-objs/%.o: srcs/%.c $(HDRS) # REMOVE -g FLAG
-	@$(CC) -g -c $(CFLAGS) -o $@ $(INCLUDES) $<
+objs/%.o: srcs/%.c $(HDRS)
+	@$(CC) -c $(CFLAGS) -o $@ $(INCLUDES) $<
 	@echo " ${PLUS} $@"
 
 $(LIBFT): FORCE
