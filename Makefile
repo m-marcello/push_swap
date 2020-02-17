@@ -6,7 +6,7 @@
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/07 18:47:20 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/01/31 20:58:13 by mmarcell      ########   odam.nl          #
+#    Updated: 2020/02/17 14:59:20 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,12 @@ $(NAME2): $(LIBFT) $(OBJS_PU_SW) $(OBJS_SHARE) # REMOVE -g FLAG
 	@$(CC) -g -o $@ $^ $(LIBFT)
 	@echo " ${PLUS} $@"
 
-objs/%.o: srcs/%.c $(HDRS) # REMOVE -g FLAG
+objs/%.o: srcs/%.c $(HDRS) | objs # REMOVE -g FLAG
 	@$(CC) -g -c $(CFLAGS) -o $@ $(INCLUDES) $<
 	@echo " ${PLUS} $@"
+
+objs:
+	@mkdir -p objs
 
 $(LIBFT): FORCE
 	@make -C $(LIBFT_PATH) | sed -e $$'s/^/$(LIBFT_PATH): /'
