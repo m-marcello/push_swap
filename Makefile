@@ -5,8 +5,8 @@
 #                                                      +:+                     #
 #    By: mmarcell <mmarcell@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
-#    Created: 2020/01/07 18:47:20 by mmarcell       #+#    #+#                 #
-#    Updated: 2020/02/17 14:49:23 by mmarcell      ########   odam.nl          #
+#    Created: 2020/01/07 18:47:20 by mmarcell      #+#    #+#                  #
+#    Updated: 2020/06/11 15:53:03 by mmarcell      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,14 +23,15 @@ OBJS := $(OBJS_CHECK) $(OBJS_PU_SW) $(OBJS_SHARE)
 CFLAGS := -Wall -Wextra -Werror
 
 LIBFT_PATH := libft
-LIBFT := $(LIBFT_PATH)/libft.a
+LIBFT := libft.a
 
 HDRS_PATH := hdrs
 INCLUDES := -I $(HDRS_PATH) -I $(LIBFT_PATH)
-HDRS := $(HDRS_PATH)/share.h $(HDRS_PATH)/check.h $(HDRS_PATH)/pu_sw.h
+HDRS := $(HDRS_PATH)/share.h $(HDRS_PATH)/check.h $(HDRS_PATH)/pu_sw.h \
+	$(HDRS_PATH)/libft.h
 
-PLUS := \033[38;5;40m+\033[0;00m
-MINUS := \033[38;5;160m-\033[0;00m
+PLUS := $$(tput setaf 2)+$$(tput sgr0)
+MINUS := $$(tput setaf 1)-$$(tput sgr0)
 
 all: $(NAME1) $(NAME2)
 
@@ -49,26 +50,13 @@ objs/%.o: srcs/%.c $(HDRS) | objs
 objs:
 	@mkdir -p $@
 
-$(LIBFT): FORCE
-	@make -C $(LIBFT_PATH) | sed -e $$'s/^/$(LIBFT_PATH): /'
+clean:
+	@rm -rfv objs | sed "s/^/ $(MINUS) /"
 
-clean: lclean
-	@make clean -C $(LIBFT_PATH) | sed -e $$'s/^/$(LIBFT_PATH): /'
-
-lclean:
-	@rm -rfv objs | sed -e $$'s/^/ $(MINUS) /'
-
-fclean: clean lfclean
-	@rm -fv $(LIBFT) | sed -e $$'s/^/ $(MINUS) /'
-
-lfclean: lclean
-	@rm -fv $(NAME1) | sed -e $$'s/^/ $(MINUS) /'
-	@rm -fv $(NAME2) | sed -e $$'s/^/ $(MINUS) /'
+fclean: clean
+	@rm -fv $(NAME1) | sed "s/^/ $(MINUS) /"
+	@rm -fv $(NAME2) | sed "s/^/ $(MINUS) /"
 
 re: fclean all
 
-lre: lfclean all
-
-FORCE:
-
-.PHONY: all clean fclean re FORCE
+.PHONY: all clean fclean re
