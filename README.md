@@ -27,4 +27,17 @@ At the root of the repository run `make`.
 
 ## usage
 
+define a variable `ARG` as the set of integers to be sorted. For example:
 
+	$> ARG="4 6 2 7 8 15"
+
+### push_swap
+
+	$> ./push_swap [options] $ARG
+	options:
+		-v	verbose
+		-c	color
+
+### checker
+
+	$> ./push_swap $ARG | ./checker $ARG
