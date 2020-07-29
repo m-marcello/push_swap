@@ -4,7 +4,7 @@ This is a very simple and highly effective algorithm project:<br>
 A set of integer wants to be sorted using only 2 stacks and a limited set of instructions to manipulate both stacks.<br>
 The goal?<br>
 Write 2 programs in C:
-- The first, named `checker`, takes integer arguments and reads instructions on the standard output. Once read, checker executes them and displays OK if integers are sorted. Otherwise, it will display KO.
+- The first, named `checker`, takes integer arguments and reads instructions on the standard output. Once read, `checker` executes them and displays `OK` if integers are sorted. Otherwise, it will display `KO`.
 - The second one, called `push_swap`, calculates the smallest amount of push-swap instruction language operations that sorts integer arguments received and displays them on the standard output.
 
 ## push-swap instruction language
